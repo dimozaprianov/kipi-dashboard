@@ -1,3 +1,4 @@
+import unplugin from "unplugin-icons/webpack"
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /**
@@ -22,6 +23,17 @@ const nextConfig = {
    */
   images: {
     unoptimized: true,
+  },
+
+  webpack(config) {
+    config.plugins.push(
+        unplugin({
+          compiler: 'jsx',
+          jsx: 'react'
+        })
+    )
+
+    return config
   },
 };
 

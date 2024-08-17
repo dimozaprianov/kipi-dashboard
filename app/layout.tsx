@@ -15,8 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" data-theme="light">
+      <body className={inter.className}>
+      <nav className="navbar flex flex-row items-center gap-2 bg-base-100 p-2">
+        <img src="/kipi-dashboard/logo.svg" className="h-12" alt="logo" />
+        <a className="btn btn-ghost text-xl">Kipi Interactive Dashboard</a>
+      </nav>
+      {children}
+      </body>
     </html>
   );
 }
