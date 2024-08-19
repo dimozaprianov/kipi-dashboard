@@ -8,10 +8,11 @@ import map from "lodash/map";
 import find from 'lodash/find';
 import {format} from 'date-fns';
 import {forEach} from "lodash";
+import {CommitInfo} from "@/components/commitInfo";
 
-async function readDailyTests(): Promise<IDailyDevTestsResult[]> {
+async function readNightlyTests(): Promise<INightlyDevTestsResult[]> {
 // Replace with your folder path
-    const folderPath = './public/data/daily-tests';
+    const folderPath = './public/data/nightly-tests';
     const result = [];
 
     try {
@@ -118,7 +119,7 @@ const getSuccessText = (value: true | false | undefined) => {
 }
 
 export default async function Home() {
-    const data = await readDailyTests()
+    const data = await readNightlyTests()
     const groupedData = groupBy(data, item => item.Project || 'NoProject');
     const sortedGroupedData = map(groupedData, group =>
         sortBy(group, item => new Date(item.StartTime))
@@ -127,11 +128,14 @@ export default async function Home() {
 
     return (
         <main className="flex min-h-screen flex-col items-start justify-start p-24 prose">
-            <h2>Daily Tests</h2>
-            {result.map(data => (<>
+            <h2>Nightly Tests</h2>
+            {result.map((data, i) => (<div key={i}>
                     <h3 className="pl-1">{data.Project}</h3>
-                    <figcaption
-                        className="pl-1">{format(new Date(data.StartTime), 'EEE MMM dd yyyy HH:mm')}</figcaption>
+                    <div className="pl-1 grid grid-cols-[auto_1fr] items-center">
+                        <div className="stat-desc p-1">{format(new Date(data.StartTime), 'EEE MMM dd yyyy HH:mm')}</div>
+                        <CommitInfo commit={data.CommitInfo}/>
+                    </div>
+
                     <div className="stats shadow">
                         <BuildResultEntry caption="Build" entry={data} icon={<GearIcon/>}/>
                         <BuildResultEntry caption="iOS" entry={find(data.MobileTestResults, e => e.Platform == "iOS")}
@@ -139,10 +143,11 @@ export default async function Home() {
                         <BuildResultEntry caption="Android"
                                           entry={find(data.MobileTestResults, e => e.Platform == "Android")}
                                           icon={<AndroidIcon/>}/>
-                        <StatEntry title="Packaging" result={getSuccessText(data.PackageSuccess)} icon={<WinIcon/>} status={data.PackageSuccess}/>
+                        <StatEntry title="Packaging" result={getSuccessText(data.PackageSuccess)} icon={<WinIcon/>}
+                                   status={data.PackageSuccess}/>
                         <PassedTestsEntry title="Tests" rawResult={data.TestResults} icon={<TestIcon/>}/>
                     </div>
-                </>
+                </div>
             ))}
         </main>
     );

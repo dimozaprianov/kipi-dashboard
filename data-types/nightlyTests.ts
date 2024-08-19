@@ -21,7 +21,14 @@ interface ICrossPlatformTestResults extends IBuildResult {
     Platform: string;
 }
 
-interface IDailyDevTestsResult extends IBuildResult {
+interface IGitLogEntry {
+    TimeStamp: Date;
+    Sha: string;
+    Message: string;
+    Author: string;
+}
+
+interface INightlyDevTestsResult extends IBuildResult {
     Project?: string;
     PackageSuccess?: boolean;
     StartTime: Date;
@@ -29,4 +36,5 @@ interface IDailyDevTestsResult extends IBuildResult {
     CriticalErrorTrace?: string;
     TestResults: ITestResults;
     MobileTestResults: ICrossPlatformTestResults[];
+    CommitInfo: IGitLogEntry;
 }
