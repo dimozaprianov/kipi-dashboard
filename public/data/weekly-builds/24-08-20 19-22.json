@@ -1,0 +1,24 @@
+{
+  "TimeStamp": "2024-08-20T19:22:16.7310821+03:00",
+  "Project": "Cryowar",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1jJmSXfFv_-fWIjQ_IIuKLUHZRzfb9FPV/view?usp=drivesdk",
+      "Log": "9WyO1hu8I2B4"
+    },
+    {
+      "Preset": "Android",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1ysLP39DW_E02P9j4zbKXdLsicxqeyWZK/view?usp=drivesdk",
+      "Log": "8H9Z0pIt9qzq"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-07-30T10:09:23+03:00",
+    "Sha": "b47bc0494b2a60079cf53f6258727c5619ff2b4b",
+    "Message": "Player does not get logged in after game if the \"Remember me on this device?\" tick is disabled (#994)\n\n* Player does not get logged in after game if the \"Remember me on this device?\" tick is disabled\n\n* Fixed all reported issues\n\n* Bugfix: The checkmark didn't appear on the Remember me on this device checkbox after a second login",
+    "Author": "Boris Rusev"
+  }
+}
