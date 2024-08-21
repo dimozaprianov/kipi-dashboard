@@ -29,9 +29,9 @@ interface IGitLogEntry {
 }
 
 interface INightlyDevTestsResult extends IBuildResult {
-    Project?: string;
+    Project: string;
     PackageSuccess?: boolean;
-    StartTime: Date;
+    TimeStamp: Date;
     CriticalError?: string;
     CriticalErrorTrace?: string;
     TestResults: ITestResults;
