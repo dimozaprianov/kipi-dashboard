@@ -1,0 +1,11 @@
+> d:\UnrealEngine5.4.3\Engine\Build\BatchFiles\Build.bat TwinStickShooterEditor Win64 Development d:\TwinStickShooter\TwinStickShooter.uproject -WaitMutex -FromMsBuild
+Using bundled DotNet SDK version: 6.0.302
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" TwinStickShooterEditor Win64 Development d:\TwinStickShooter\TwinStickShooter.uproject -WaitMutex -FromMsBuild
+Log file: D:\UnrealEngine5.4.3\Engine\Programs\UnrealBuildTool\Log.txt
+Using 'git status' to determine working set for adaptive non-unity build (D:\UnrealEngine5.4.3).
+Using 'git status' to determine working set for adaptive non-unity build (D:\TwinStickShooter).
+Waiting for 'git status' command to complete
+Target is up to date
+Total execution time: 6.21 seconds
+Exited with code 0
+> 
