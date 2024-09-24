@@ -1,0 +1,75 @@
+{
+  "Project": "TwinStickShooter",
+  "TimeStamp": "2024-09-24T12:26:28.2751144+03:00",
+  "CriticalError": null,
+  "CriticalErrorTrace": null,
+  "BuildSuccess": true,
+  "BuildLog": "jPyL7fpd302E",
+  "BuildWarnings": 0,
+  "TestResults": {
+    "Log": "VJQdyUXREQSS",
+    "CriticalErrors": false,
+    "TestsTimedOut": false,
+    "Results": [
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Damage_Over_Time",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Damage",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Healing",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Speed_Change",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.AreaOfEffect",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Beam",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Bolt",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Evade",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Instant",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Melee",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Ram",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Spawn",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Teleport",
+        "Result": false
+      }
+    ]
+  },
+  "MobileTestResults": [],
+  "CommitInfo": {
+    "TimeStamp": "2024-09-20T14:32:00+03:00",
+    "Sha": "709a97fd94d54dea8fa5abe6b33b0671f427bcaa",
+    "Message": "Music System optimizations - Slomo and Pause (#969)\n\n* Music System optimizations - Slomo and Pause\n\n* Bug fix - music system now checks if music is playing before activating Slomo thus eliminating bug 2\n\n* Bug fix - made the music start in slomo if Slomo was activated during intensity 0 and is still ongoing when transitioning in intensity 0 to 1 or 0 to 2.\n\n* Bug fix - 0-1 and 0-2 start in regular speed if slomo is not active\n\n* Bug fix",
+    "Author": "alshkodrova"
+  }
+}
