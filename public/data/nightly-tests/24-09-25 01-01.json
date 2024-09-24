@@ -1,0 +1,75 @@
+{
+  "Project": "TwinStickShooter",
+  "TimeStamp": "2024-09-25T01:01:06.3403795+03:00",
+  "CriticalError": null,
+  "CriticalErrorTrace": null,
+  "BuildSuccess": true,
+  "BuildLog": "zmmhsXDTibKZ",
+  "BuildWarnings": 62,
+  "TestResults": {
+    "Log": "mBXqx0HLVBWD",
+    "CriticalErrors": false,
+    "TestsTimedOut": false,
+    "Results": [
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Damage_Over_Time",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Damage",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Healing",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Speed_Change",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.AreaOfEffect",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Beam",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Bolt",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Evade",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Instant",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Melee",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Ram",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Spawn",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Teleport",
+        "Result": false
+      }
+    ]
+  },
+  "MobileTestResults": [],
+  "CommitInfo": {
+    "TimeStamp": "2024-09-24T17:58:36+03:00",
+    "Sha": "cd2c2c7e5e45ac94b7b56f2f830e25e3e3e39d80",
+    "Message": "applied phys react values",
+    "Author": "Vlado"
+  }
+}
