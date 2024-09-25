@@ -1,0 +1,75 @@
+{
+  "Project": "Cryowar",
+  "TimeStamp": "2024-09-25T06:04:24.3617074+03:00",
+  "CriticalError": null,
+  "CriticalErrorTrace": null,
+  "BuildSuccess": true,
+  "BuildLog": "paC9O4oPl37m",
+  "BuildWarnings": 0,
+  "TestResults": {
+    "Log": "P9AMk6xXWiMm",
+    "CriticalErrors": false,
+    "TestsTimedOut": false,
+    "Results": [
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Damage_Over_Time",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Damage",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Healing",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Speed_Change",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.AreaOfEffect",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Beam",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Bolt",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Evade",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Instant",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Melee",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Ram",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Spawn",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Teleport",
+        "Result": false
+      }
+    ]
+  },
+  "MobileTestResults": [],
+  "CommitInfo": {
+    "TimeStamp": "2024-07-30T10:09:23+03:00",
+    "Sha": "b47bc0494b2a60079cf53f6258727c5619ff2b4b",
+    "Message": "Player does not get logged in after game if the \"Remember me on this device?\" tick is disabled (#994)\n\n* Player does not get logged in after game if the \"Remember me on this device?\" tick is disabled\n\n* Fixed all reported issues\n\n* Bugfix: The checkmark didn't appear on the Remember me on this device checkbox after a second login",
+    "Author": "Boris Rusev"
+  }
+}
