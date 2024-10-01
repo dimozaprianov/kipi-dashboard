@@ -2,7 +2,6 @@
 
 import {format} from "date-fns";
 import {useState} from "react";
-import {InfoIcon} from "@/components/icons";
 
 export function CommitInfo({commit}: {commit: IGitLogEntry}) {
     const [visible, setVisible] = useState(false)

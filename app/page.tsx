@@ -171,9 +171,10 @@ const getSuccessText = (value: true | false | undefined) => {
 
 function groupAndSortData<T extends {Project: string, TimeStamp: Date}>(data: T[]): T[] {
     const groupedData = groupBy(data, item => item.Project || 'NoProject');
-    const sortedGroupedData = map(groupedData, group =>
-        sortBy(group, item => new Date(item.TimeStamp))
-    );
+    const sortedGroupedData = map(groupedData, group => {
+            const sorted = sortBy(group, item => new Date(item.TimeStamp))
+            return sorted.slice(sorted.length-1, sorted.length)
+        });
     return sortBy(flatten(sortedGroupedData), item => -new Date(item.TimeStamp).getTime());
 }
 
