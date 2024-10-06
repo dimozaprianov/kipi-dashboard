@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2024-10-06T23:00:32.8239224+03:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1EEbw3je9nruH6RoxkibgnCq1zqFWlV2R/view?usp=drivesdk",
+      "Log": "dPclVJPZ2LBE"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-10-04T16:14:38+03:00",
+    "Sha": "48954b582f577e59e53f578da989c1ccdd24b365",
+    "Message": "Added Small Story Fragment to Traps Map (#984)",
+    "Author": "SvetoslavAlexandrov"
+  }
+}
