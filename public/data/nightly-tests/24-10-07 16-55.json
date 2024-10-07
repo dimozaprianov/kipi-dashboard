@@ -1,0 +1,75 @@
+{
+  "Project": "Cryowar",
+  "TimeStamp": "2024-10-07T16:55:43.4569467+03:00",
+  "CriticalError": "Exception of type 'Gems.CommandLineRunner+CommandFailed' was thrown.",
+  "CriticalErrorTrace": "   at packaging.Job.Start(Boolean checkIfBuildExists) in C:\\kipi-ci\\packaging\\Job.cs:line 36\r\n   at NightlyDevBranchTests.DoCrossplatformBuilds(String projectName, String branch, DateTime startTime, GitLogEntry commit, Configuration config) in C:\\kipi-ci\\Tasks\\NighlyDevBranchTests.cs:line 61\r\n   at NightlyDevBranchTests.Run(String projectName, String projectPath, String devBranch) in C:\\kipi-ci\\Tasks\\NighlyDevBranchTests.cs:line 109",
+  "BuildSuccess": true,
+  "BuildLog": "a5A5UvqRdNCG",
+  "BuildWarnings": 37,
+  "TestResults": {
+    "Log": "onqg7HKDMZGU",
+    "CriticalErrors": false,
+    "TestsTimedOut": false,
+    "Results": [
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Damage_Over_Time",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Damage",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Healing",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Speed_Change",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.AreaOfEffect",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Beam",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Bolt",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Evade",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Instant",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Melee",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Ram",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Spawn",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Teleport",
+        "Result": false
+      }
+    ]
+  },
+  "MobileTestResults": [],
+  "CommitInfo": {
+    "TimeStamp": "2024-10-04T10:42:19+03:00",
+    "Sha": "8e12206cb690fddb1659313a2ee1db90e7f58c30",
+    "Message": "Updated \"Daily Activity\" to \"Daily Missions\" (#1004)",
+    "Author": "Boris Dimitrov"
+  }
+}
