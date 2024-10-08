@@ -1,0 +1,81 @@
+{
+  "Project": "TwinStickShooter",
+  "TimeStamp": "2024-10-09T01:01:07.5440782+03:00",
+  "CriticalError": null,
+  "CriticalErrorTrace": null,
+  "BuildSuccess": true,
+  "BuildLog": "YDk0eGqwLlUH",
+  "BuildWarnings": 143,
+  "TestResults": {
+    "Log": "HN3hWYGGtENK",
+    "CriticalErrors": false,
+    "TestsTimedOut": false,
+    "Results": [
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Damage_Over_Time",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Damage",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Healing",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Speed_Change",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.AreaOfEffect",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Beam",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Bolt",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Evade",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Instant",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Melee",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Ram",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Spawn",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Teleport",
+        "Result": false
+      }
+    ]
+  },
+  "MobileTestResults": [
+    {
+      "Preset": "Windows",
+      "BuildSuccess": true,
+      "BuildLog": "FOjsMzxAyOii"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-10-08T18:26:52+03:00",
+    "Sha": "69fa728e8285851c484497bccc496568a438ac75",
+    "Message": "Renamed the ingredient",
+    "Author": "SvetoslavAlexandrov"
+  }
+}
