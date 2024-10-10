@@ -1,0 +1,75 @@
+{
+  "Project": "Cryowar",
+  "TimeStamp": "2024-10-11T01:22:50.5885468+03:00",
+  "CriticalError": "Exception of type 'Gems.CommandLineRunner+CommandFailed' was thrown.",
+  "CriticalErrorTrace": "   at packaging.Job.Start(Boolean checkIfBuildExists) in c:\\kipi-ci\\packaging\\Job.cs:line 36\r\n   at NightlyDevBranchTests.DoCrossplatformBuilds(String projectName, String branch, DateTime startTime, GitLogEntry commit, Configuration config) in c:\\kipi-ci\\Tasks\\NighlyDevBranchTests.cs:line 61\r\n   at NightlyDevBranchTests.Run(String projectName, String projectPath, String devBranch) in c:\\kipi-ci\\Tasks\\NighlyDevBranchTests.cs:line 109",
+  "BuildSuccess": true,
+  "BuildLog": "H5wKw5TLswD1",
+  "BuildWarnings": 130,
+  "TestResults": {
+    "Log": "uvaraNVkQfO3",
+    "CriticalErrors": false,
+    "TestsTimedOut": false,
+    "Results": [
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Damage_Over_Time",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Damage",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Healing",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Speed_Change",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.AreaOfEffect",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Beam",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Bolt",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Evade",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Instant",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Melee",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Ram",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Spawn",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Teleport",
+        "Result": false
+      }
+    ]
+  },
+  "MobileTestResults": [],
+  "CommitInfo": {
+    "TimeStamp": "2024-10-10T17:49:24+03:00",
+    "Sha": "4bbf983d54c82f42aa0d2225b02c9d3fdeb91dae",
+    "Message": "Made Ability Casting affect Movement and Rotation (#1003)\n\n* Made Ability Casting affect Movement and Rotation\n\n* QA review\n\n* Revert \"QA review\"\n\nThis reverts commit bd1ffc3990113fe304b7c1503b2b9fb3bdcb6ca0.",
+    "Author": "Boris Dimitrov"
+  }
+}
