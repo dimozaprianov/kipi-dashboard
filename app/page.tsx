@@ -149,12 +149,12 @@ function PassedTestsEntry({icon, title, detailsTitle, rawResult}: {
             num++;
     }
 
-    return <StatEntry {...common} result={`${num}/${results.length} passed`} status={
-        num == results.length
-            ? EVisualStatus.Success
-            : num == 0
-                ? EVisualStatus.Error
-                : EVisualStatus.Warning
+    return <StatEntry {...common} result={results.length === 0 ? "Skipped" : `${num}/${results.length} passed`} status={
+        results.length == 0
+            ? EVisualStatus.Skipped
+            : num == results.length
+                ? EVisualStatus.Success
+                : EVisualStatus.Error
     }/>;
 }
 
