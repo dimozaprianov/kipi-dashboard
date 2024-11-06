@@ -119,8 +119,9 @@ function BuildResultEntry({entry, caption, icon, detailsTitle}: BuildResultEntry
     if (!entry)
         return <StatEntry result="-" status={EVisualStatus.Skipped} {...common}/>
 
+    const warnings = entry.BuildWarnings !== undefined ? `, ${entry.BuildWarnings} warnings` : ''
     return entry.BuildSuccess
-        ? <StatEntry result={`Success, ${entry.BuildWarnings} warnings`} status={EVisualStatus.Success} {...common}/>
+        ? <StatEntry result={`Success${warnings}`} status={EVisualStatus.Success} {...common}/>
         : <StatEntry result="Failed" status={EVisualStatus.Error} {...common}/>
 }
 
@@ -190,39 +191,41 @@ export default async function Home() {
             {nightly.map((data, i) => (
                 <div key={i}>
                     <h3 className="pl-1">{data[0].Project}</h3>
-                    {data.map(entry => (<>
-                        <div className="pl-1 grid grid-cols-[auto_1fr] items-center">
-                            <div
-                                className="stat-desc p-1">{format(new Date(entry.TimeStamp), 'EEE MMM dd yyyy HH:mm')}</div>
-                            <CommitInfo commit={entry.CommitInfo}/>
-                        </div>
-                        <div className="stats stats-vertical md:stats-horizontal shadow mb-2">
-                            <BuildResultEntry
-                                detailsTitle="Windows Compilation"
-                                caption="Compilation"
-                                entry={entry}
-                                icon={<GearIcon/>}/>
-                            <BuildResultEntry
-                                detailsTitle="iOS Compilation"
-                                caption="iOS"
-                                entry={find(entry.MobileTestResults, e => e.Platform == "iOS")}
-                                icon={<IOSIcon/>}/>
-                            <BuildResultEntry
-                                caption="Android"
-                                detailsTitle="Android Compilation"
-                                entry={find(entry.MobileTestResults, e => e.Platform == "Android")}
-                                icon={<AndroidIcon/>}/>
-                            <StatEntry
-                                title="Packaging"
-                                result={getSuccessText(entry.PackageSuccess)}
-                                icon={<WinIcon/>}
-                                status={entry.PackageSuccess}/>
-                            <PassedTestsEntry
-                                title="Tests"
-                                detailsTitle="Test Results"
-                                rawResult={entry?.TestResults}
-                                icon={<TestIcon/>}/>
-                        </div>
+                    {data.map(entry => (
+                        <>
+                            <div className="pl-1 grid grid-cols-[auto_1fr] items-center">
+                                <div
+                                    className="stat-desc p-1">{format(new Date(entry.TimeStamp), 'EEE MMM dd yyyy HH:mm')}</div>
+                                <CommitInfo commit={entry.CommitInfo}/>
+                            </div>
+                            <div className="stats stats-vertical md:stats-horizontal shadow mb-2">
+                                <BuildResultEntry
+                                    detailsTitle="Windows Compilation"
+                                    caption="Compilation"
+                                    entry={entry}
+                                    icon={<GearIcon/>}/>
+                                <BuildResultEntry
+                                    caption="Windows"
+                                    detailsTitle="Windows Build"
+                                    entry={find(entry.CrossPlatformBuildResults, e => e.Preset == "Windows")}
+                                    icon={<WinIcon/>}
+                                />
+                                <BuildResultEntry
+                                    detailsTitle="iOS Build"
+                                    caption="iOS"
+                                    entry={find(entry.CrossPlatformBuildResults, e => e.Preset == "iOS")}
+                                    icon={<IOSIcon/>}/>
+                                <BuildResultEntry
+                                    caption="Android"
+                                    detailsTitle="Android Build"
+                                    entry={find(entry.CrossPlatformBuildResults, e => e.Preset == "Android")}
+                                    icon={<AndroidIcon/>}/>
+                                <PassedTestsEntry
+                                    title="Tests"
+                                    detailsTitle="Test Results"
+                                    rawResult={entry?.TestResults}
+                                    icon={<TestIcon/>}/>
+                            </div>
                         </>))}
                         </div>
                     ))}

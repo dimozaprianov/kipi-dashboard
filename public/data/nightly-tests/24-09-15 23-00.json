@@ -65,7 +65,7 @@
       }
     ]
   },
-  "MobileTestResults": [],
+  "CrossPlatformBuildResults": [],
   "CommitInfo": {
     "TimeStamp": "2024-09-14T01:39:15+03:00",
     "Sha": "cedf666ea1b91a484cfbc9ff1c0c1ae179bbe07c",

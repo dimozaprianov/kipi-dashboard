@@ -13,12 +13,11 @@ interface ITestResults {
 interface IBuildResult {
     BuildSuccess: boolean,
     BuildLog: string,
-    BuildWarnings: number,
-    entry?: any
+    BuildWarnings?: number,
 }
 
 interface ICrossPlatformTestResults extends IBuildResult {
-    Platform: string;
+    Preset: string;
 }
 
 interface IGitLogEntry {
@@ -30,11 +29,10 @@ interface IGitLogEntry {
 
 interface INightlyDevTestsResult extends IBuildResult {
     Project: string;
-    PackageSuccess?: boolean;
     TimeStamp: Date;
     CriticalError?: string;
     CriticalErrorTrace?: string;
     TestResults: ITestResults;
-    MobileTestResults: ICrossPlatformTestResults[];
+    CrossPlatformBuildResults: ICrossPlatformTestResults[];
     CommitInfo: IGitLogEntry;
 }

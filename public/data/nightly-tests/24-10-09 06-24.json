@@ -7,7 +7,7 @@
   "BuildLog": "ZqCuBw9AaPO9",
   "BuildWarnings": 118,
   "TestResults": null,
-  "MobileTestResults": [],
+  "CrossPlatformBuildResults": [],
   "CommitInfo": {
     "TimeStamp": "2024-10-08T12:24:38+03:00",
     "Sha": "66896d952f309a746f9eba309f1027b615394d05",

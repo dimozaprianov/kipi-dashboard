@@ -65,7 +65,7 @@
       }
     ]
   },
-  "MobileTestResults": [
+  "CrossPlatformBuildResults": [
     {
       "Preset": "Windows",
       "BuildSuccess": true,
