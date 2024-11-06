@@ -1,0 +1,75 @@
+{
+  "Project": "TwinStickShooter",
+  "TimeStamp": "2024-11-06T05:04:10.1974292+02:00",
+  "CriticalError": "Exception of type 'Gems.CommandLineRunner+CommandFailed' was thrown.",
+  "CriticalErrorTrace": "   at packaging.Job.Start(Boolean checkIfBuildExists) in C:\\kipi-ci\\packaging\\Job.cs:line 36\r\n   at NightlyDevBranchTests.DoCrossplatformBuilds(String projectName, String branch, DateTime startTime, GitLogEntry commit, Configuration config) in C:\\kipi-ci\\Tasks\\NighlyDevBranchTests.cs:line 61\r\n   at NightlyDevBranchTests.Run(String projectName, String projectPath, String devBranch) in C:\\kipi-ci\\Tasks\\NighlyDevBranchTests.cs:line 109",
+  "BuildSuccess": true,
+  "BuildLog": "T1YEIanVXu75",
+  "BuildWarnings": 150,
+  "TestResults": {
+    "Log": "T2gLg4iHp8oP",
+    "CriticalErrors": false,
+    "TestsTimedOut": false,
+    "Results": [
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Damage_Over_Time",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Damage",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Healing",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Speed_Change",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.AreaOfEffect",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Beam",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Bolt",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Evade",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Instant",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Melee",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Ram",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Spawn",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Teleport",
+        "Result": false
+      }
+    ]
+  },
+  "MobileTestResults": [],
+  "CommitInfo": {
+    "TimeStamp": "2024-11-05T17:48:46+02:00",
+    "Sha": "d0f0cf04edf5f3f6661614e5cb16fe8dbe78399c",
+    "Message": "BUGFIX: Normal revive applies damage to nearby enemies (#1030)\n\n* Moved the Cheat Revive Damage to C++\n\n* Update KipiTech\n\n* QA  review",
+    "Author": "Boris Dimitrov"
+  }
+}
