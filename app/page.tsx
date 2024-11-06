@@ -10,6 +10,7 @@ import {format} from 'date-fns';
 import {CommitInfo} from "@/components/commitInfo";
 import {IWeeklyBuildResult, IWeeklyBuildResults} from "@/data-types/weeklyBuilds";
 import {SectionDetails} from "@/components/sectionDetails";
+import {filter} from "lodash";
 
 async function readTestsData<T>(folderPath: string): Promise<T[]> {
     // Replace with your folder path
@@ -133,16 +134,16 @@ function PassedTestsEntry({icon, title, detailsTitle, rawResult}: {
         icon,
         title,
         detailsTitle,
-        log: rawResult.Log,
+        log: rawResult?.Log ?? "",
         testResults: rawResult,
     }
-    if (rawResult.CriticalErrors)
+    if (rawResult?.CriticalErrors)
         return <StatEntry {...common} result="Crash" status={EVisualStatus.Error}/>;
-    if (rawResult.TestsTimedOut)
+    if (rawResult?.TestsTimedOut)
         return <StatEntry {...common} result="Timed Out" status={EVisualStatus.Error}/>;
 
     let num = 0
-    const results = rawResult.Results ?? []
+    const results = rawResult?.Results ?? []
     for (const r of results) {
         if (r.Result)
             num++;
@@ -169,13 +170,12 @@ const getSuccessText = (value: true | false | undefined) => {
     }
 }
 
-function groupAndSortData<T extends {Project: string, TimeStamp: Date}>(data: T[]): T[] {
-    const groupedData = groupBy(data, item => item.Project || 'NoProject');
+function groupAndSortData<T extends {Project: string, TimeStamp: Date}>(data: T[]): T[][] {
+    const groupedData = filter(groupBy(data, item => item.Project || 'NoProject'), a => a.length > 0);
     const sortedGroupedData = map(groupedData, group => {
-            const sorted = sortBy(group, item => new Date(item.TimeStamp))
-            return sorted.slice(sorted.length-1, sorted.length)
+            return sortBy(group, item => -new Date(item.TimeStamp).getTime())
         });
-    return sortBy(flatten(sortedGroupedData), item => -new Date(item.TimeStamp).getTime());
+    return sortBy(sortedGroupedData, item => item.length > 0 ? -new Date(item[0].TimeStamp).getTime() : -1);
 }
 
 export default async function Home() {
@@ -187,69 +187,73 @@ export default async function Home() {
     return (
         <main className="flex min-h-screen flex-col items-start justify-start p-24 prose">
             <h2>Nightly Tests</h2>
-            {nightly.map((data, i) => (<div key={i}>
-                    <h3 className="pl-1">{data.Project}</h3>
-                    <div className="pl-1 grid grid-cols-[auto_1fr] items-center">
-                        <div className="stat-desc p-1">{format(new Date(data.TimeStamp), 'EEE MMM dd yyyy HH:mm')}</div>
-                        <CommitInfo commit={data.CommitInfo}/>
-                    </div>
+            {nightly.map((data, i) => (
+                <div key={i}>
+                    <h3 className="pl-1">{data[0].Project}</h3>
+                    {data.map(entry => (<>
+                        <div className="pl-1 grid grid-cols-[auto_1fr] items-center">
+                            <div
+                                className="stat-desc p-1">{format(new Date(entry.TimeStamp), 'EEE MMM dd yyyy HH:mm')}</div>
+                            <CommitInfo commit={entry.CommitInfo}/>
+                        </div>
+                        <div className="stats stats-vertical md:stats-horizontal shadow mb-2">
+                            <BuildResultEntry
+                                detailsTitle="Windows Compilation"
+                                caption="Compilation"
+                                entry={entry}
+                                icon={<GearIcon/>}/>
+                            <BuildResultEntry
+                                detailsTitle="iOS Compilation"
+                                caption="iOS"
+                                entry={find(entry.MobileTestResults, e => e.Platform == "iOS")}
+                                icon={<IOSIcon/>}/>
+                            <BuildResultEntry
+                                caption="Android"
+                                detailsTitle="Android Compilation"
+                                entry={find(entry.MobileTestResults, e => e.Platform == "Android")}
+                                icon={<AndroidIcon/>}/>
+                            <StatEntry
+                                title="Packaging"
+                                result={getSuccessText(entry.PackageSuccess)}
+                                icon={<WinIcon/>}
+                                status={entry.PackageSuccess}/>
+                            <PassedTestsEntry
+                                title="Tests"
+                                detailsTitle="Test Results"
+                                rawResult={entry?.TestResults}
+                                icon={<TestIcon/>}/>
+                        </div>
+                        </>))}
+                        </div>
+                    ))}
+                    <h2>Weekly Builds</h2>
+                    {weekly.map((data, i) => (<div key={i}>
+                        <h3 className="pl-1">{data[0].Project}</h3>
+                        {data.map(entry => <>
+                            <div className="pl-1 grid grid-cols-[auto_1fr] items-center">
+                            <div className="stat-desc p-1">{format(new Date(entry.TimeStamp), 'EEE MMM dd yyyy HH:mm')}</div>
+                            <CommitInfo commit={entry.CommitInfo}/>
+                        </div>
 
-                    <div className="stats stats-vertical md:stats-horizontal shadow">
-                        <BuildResultEntry
-                            detailsTitle="Windows Compilation"
-                            caption="Compilation"
-                            entry={data}
-                            icon={<GearIcon/>}/>
-                        <BuildResultEntry
-                            detailsTitle="iOS Compilation"
-                            caption="iOS"
-                            entry={find(data.MobileTestResults, e => e.Platform == "iOS")}
-                            icon={<IOSIcon/>}/>
-                        <BuildResultEntry
-                            caption="Android"
-                            detailsTitle="Android Compilation"
-                            entry={find(data.MobileTestResults, e => e.Platform == "Android")}
-                            icon={<AndroidIcon/>}/>
-                        <StatEntry
-                            title="Packaging"
-                            result={getSuccessText(data.PackageSuccess)}
-                            icon={<WinIcon/>}
-                            status={data.PackageSuccess}/>
-                        <PassedTestsEntry
-                            title="Tests"
-                            detailsTitle="Test Results"
-                            rawResult={data.TestResults}
-                            icon={<TestIcon/>}/>
-                    </div>
-                </div>
-            ))}
-            <h2>Weekly Builds</h2>
-            {weekly.map((data, i) => (<div key={i}>
-                    <h3 className="pl-1">{data.Project}</h3>
-                    <div className="pl-1 grid grid-cols-[auto_1fr] items-center">
-                        <div className="stat-desc p-1">{format(new Date(data.TimeStamp), 'EEE MMM dd yyyy HH:mm')}</div>
-                        <CommitInfo commit={data.CommitInfo}/>
-                    </div>
-
-                    <div className="stats stats-vertical md:stats-horizontal shadow">
-                        <PlatformBuildResult
-                            caption="Windows"
-                            detailsTitle="Windows Build Downloads"
-                            entry={find(data.Results, e => e.Preset.startsWith("Windows"))}
-                            icon={<WinIcon/>}/>
-                        <PlatformBuildResult
-                            caption="Android"
-                            detailsTitle="Android Build Downloads"
-                            entry={find(data.Results, e => e.Preset.startsWith("Android"))}
-                            icon={<AndroidIcon/>}/>
-                        <PlatformBuildResult
-                            caption="iOS"
-                            detailsTitle="iOS Build Downloads"
-                            entry={find(data.Results, e => e.Preset.startsWith("iOS"))}
-                            icon={<IOSIcon/>}/>
-                    </div>
-                </div>
-            ))}
+                        <div className="stats stats-vertical md:stats-horizontal shadow mb-2">
+                            <PlatformBuildResult
+                                caption="Windows"
+                                detailsTitle="Windows Build Downloads"
+                                entry={find(entry.Results, e => e.Preset.startsWith("Windows"))}
+                                icon={<WinIcon/>}/>
+                            <PlatformBuildResult
+                                caption="Android"
+                                detailsTitle="Android Build Downloads"
+                                entry={find(entry.Results, e => e.Preset.startsWith("Android"))}
+                                icon={<AndroidIcon/>}/>
+                            <PlatformBuildResult
+                                caption="iOS"
+                                detailsTitle="iOS Build Downloads"
+                                entry={find(entry.Results, e => e.Preset.startsWith("iOS"))}
+                                icon={<IOSIcon/>}/>
+                        </div>
+                    </>)}
+            </div>))}
         </main>
     );
 }
