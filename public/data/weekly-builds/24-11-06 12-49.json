@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2024-11-06T12:49:33.2139329+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/10CptdSoLRHnNZPrJyLyviBQ23UAM7-ER/view?usp=drivesdk",
+      "Log": "MaaSxRENGODg"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-11-05T17:48:46+02:00",
+    "Sha": "d0f0cf04edf5f3f6661614e5cb16fe8dbe78399c",
+    "Message": "BUGFIX: Normal revive applies damage to nearby enemies (#1030)\n\n* Moved the Cheat Revive Damage to C++\n\n* Update KipiTech\n\n* QA  review\n\n* QA review\n\n* QA review 2\n\n* Update KipiTech",
+    "Author": "Boris Dimitrov"
+  }
+}
