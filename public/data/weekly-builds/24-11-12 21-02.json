@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2024-11-12T21:02:15.605544+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": false,
+      "DownloadLink": null,
+      "Log": "hiIIwL9joX8P"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-11-12T15:46:19+02:00",
+    "Sha": "131fbb96119ef833bf5ddfc4b51acdd702a2130d",
+    "Message": "Wretch_Mortar Character (#1050)\n\n* Heavy_Mortar Character\n\nHeavy_Mortar Character Files and Set Up\n\n* Missing texture fix\n\nMissing texture fix\nRestored ABP_Wretch_Ranged from development\n\n* Fixes\n\n1.) Reimported SK with skin fixes\n2.) Fixed weapon pop",
+    "Author": "miushery"
+  }
+}
