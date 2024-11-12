@@ -1,0 +1,81 @@
+{
+  "Project": "TwinStickShooter",
+  "TimeStamp": "2024-11-12T21:22:14.6962897+02:00",
+  "CriticalError": null,
+  "CriticalErrorTrace": null,
+  "BuildSuccess": true,
+  "BuildLog": "KabXO16kjvyD",
+  "BuildWarnings": 150,
+  "TestResults": {
+    "Log": "xFjrPNOh0ptb",
+    "CriticalErrors": false,
+    "TestsTimedOut": false,
+    "Results": [
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Damage_Over_Time",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Damage",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Healing",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Speed_Change",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.AreaOfEffect",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Beam",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Bolt",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Evade",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Instant",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Melee",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Ram",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Spawn",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Teleport",
+        "Result": false
+      }
+    ]
+  },
+  "CrossPlatformBuildResults": [
+    {
+      "Preset": "Windows",
+      "BuildLog": "Ua0STPrBpyQV",
+      "BuildSuccess": false
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-11-12T15:46:19+02:00",
+    "Sha": "131fbb96119ef833bf5ddfc4b51acdd702a2130d",
+    "Message": "Wretch_Mortar Character (#1050)\n\n* Heavy_Mortar Character\n\nHeavy_Mortar Character Files and Set Up\n\n* Missing texture fix\n\nMissing texture fix\nRestored ABP_Wretch_Ranged from development\n\n* Fixes\n\n1.) Reimported SK with skin fixes\n2.) Fixed weapon pop",
+    "Author": "miushery"
+  }
+}
