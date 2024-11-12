@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2024-11-07T14:47:50.0949299+02:00",
+  "Project": "Cryowar",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1abKrB5bifooF0UY9M03XEKSg2v2yc2Aq/view?usp=drivesdk",
+      "Log": "UXBY2Q7RhJaz"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-10-11T17:40:51+03:00",
+    "Sha": "61b198dc8e598d031a16a953e911758bda062184",
+    "Message": "Integrate Retribution Character (#1005)\n\n* Added and set up the Retribution character\n\n* QA review\n\n* QA review 2",
+    "Author": "Boris Dimitrov"
+  }
+}
