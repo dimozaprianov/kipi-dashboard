@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2024-11-13T15:35:49.2658911+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1twRY2rIluWpD3GfVCy-2pxfUBlEOBIDa/view?usp=drivesdk",
+      "Log": "oT78wKjysYhB"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-11-13T14:07:41+02:00",
+    "Sha": "8223b2b55b43b1d3efccb9811934da7c27981961",
+    "Message": "[BUGFIX] SetMassOverrideInKg Crashes build (#1056)\n\n* bugfix\n\n* throwweapon datattable row initialization",
+    "Author": "Vlado"
+  }
+}
