@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2024-11-13T21:37:02.9145876+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1IJNjruhI7Yvlxry6Vp1bMWk6mcq2d1ID/view?usp=drivesdk",
+      "Log": "DjKQH401zDXl"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-11-13T15:38:27+02:00",
+    "Sha": "2aa684a92d1a6c378b370a9c7fe08d17771057a6",
+    "Message": "Cutscene trigger BP and sample cutscene (#1058)",
+    "Author": "SvetoslavAlexandrov"
+  }
+}
