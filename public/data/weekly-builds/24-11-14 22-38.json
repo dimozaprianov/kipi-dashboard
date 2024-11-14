@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2024-11-14T22:38:07.9463629+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/17q07YPhC3WDIPE2qHJ6FcjCoBqUK6AjK/view?usp=drivesdk",
+      "Log": "QyaJooNgNSGV"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-11-14T17:46:17+02:00",
+    "Sha": "84784343f32ff669ecab47b422d8d53527708c36",
+    "Message": "[BUGFIX] Hit React animations of player characters are not triggered by all enemies (#1044)\n\n* call ApplyPhysicalImpulse On TakeAnyDamage\n\n* qa review\n\n* resolve merge conflicts",
+    "Author": "Vlado"
+  }
+}
