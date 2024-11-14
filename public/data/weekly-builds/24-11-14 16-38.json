@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2024-11-14T16:38:01.4987047+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/14vLy1EY_DI1PTD-HW-7BaKBM8Xk8FaFL/view?usp=drivesdk",
+      "Log": "PgO815c5WmXR"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-11-14T11:46:39+02:00",
+    "Sha": "39e7a9d31d74938c1d5c03f1511fa06e4e48b646",
+    "Message": "Mech Spider Movement SFX (#1020)\n\n* Mech Spider Movement SFX\n\n* Renaming S_Boss_Stomp_Load2 to S_Boss_Stomp_Load_V2 after further discussion with Yoan\n\n* Added initiate sound to steps animation; Changes to Stomp metasound to make the sfx sound more powerful.\n\n* Added jump sfx back to animation after conflicts were resolved",
+    "Author": "alshkodrova"
+  }
+}
