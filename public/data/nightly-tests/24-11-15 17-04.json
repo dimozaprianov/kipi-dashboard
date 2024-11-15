@@ -1,0 +1,81 @@
+{
+  "Project": "TwinStickShooter",
+  "TimeStamp": "2024-11-15T17:04:58.7372045+02:00",
+  "CriticalError": null,
+  "CriticalErrorTrace": null,
+  "BuildSuccess": true,
+  "BuildLog": "xhYFQqeqNcVQ",
+  "BuildWarnings": 150,
+  "TestResults": {
+    "Log": "m6MkjAT0ZFDD",
+    "CriticalErrors": false,
+    "TestsTimedOut": false,
+    "Results": [
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Damage_Over_Time",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Damage",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Healing",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Speed_Change",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.AreaOfEffect",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Beam",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Bolt",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Evade",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Instant",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Melee",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Ram",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Spawn",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Teleport",
+        "Result": false
+      }
+    ]
+  },
+  "CrossPlatformBuildResults": [
+    {
+      "Preset": "Windows",
+      "BuildLog": "kgG4CvnsL6Ik",
+      "BuildSuccess": true
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-11-15T16:27:51+02:00",
+    "Sha": "1fd9760128ab4c0543dea6ac01471ace99d358e1",
+    "Message": "Implemented Area Of Effect Ability OnActivate Niagara VFX (#1060)\n\n* Update KipiTech\n\n* Code review\n\n* QA review\n\n* Update KipiTech\n\n* Update KipiTech",
+    "Author": "Boris Dimitrov"
+  }
+}
