@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2024-11-15T16:40:16.7078894+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1EZymTIKeotr8ecq7Aci-Yz9XorpEAL2x/view?usp=drivesdk",
+      "Log": "FGdMvIIV0g0F"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-11-15T16:27:51+02:00",
+    "Sha": "1fd9760128ab4c0543dea6ac01471ace99d358e1",
+    "Message": "Implemented Area Of Effect Ability OnActivate Niagara VFX (#1060)\n\n* Update KipiTech\n\n* Code review\n\n* QA review\n\n* Update KipiTech\n\n* Update KipiTech",
+    "Author": "Boris Dimitrov"
+  }
+}
