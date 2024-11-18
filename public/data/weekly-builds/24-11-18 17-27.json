@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2024-11-18T17:27:16.1981031+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1vDLbALK2IrZNxgC9e52Lkkdv99sU0ZiX/view?usp=drivesdk",
+      "Log": "SRz5xuqa24u9"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-11-18T16:40:10+02:00",
+    "Sha": "85a65800f66509c550d71592c25968975f159d6d",
+    "Message": "Asssign SoundClasses to audio assets (#1066)",
+    "Author": "alshkodrova"
+  }
+}
