@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2024-11-30T01:00:15.8209607+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": false,
+      "DownloadLink": null,
+      "Log": "FygneV84tIBD"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-11-29T19:08:08+02:00",
+    "Sha": "79655769bf577be72a6f025e00507238c3fd1613",
+    "Message": "Haven 1004 heavy soft stop polish (#1087)\n\n* MiniGun Soft Stops and polished Run_Aim Stops\n\nMiniGun Soft Stops and polished Run_Aim Stops\n\n* Crouch and MiniGun Soft stops\n\nCrouch and MiniGun Soft stops\n\n* Fixed a small typo in the BS_Heavy_MIniGun_Soft_Stop asset\n\n---------\n\nCo-authored-by: Yoan266 <yoan@kipiinteractive.com>",
+    "Author": "miushery"
+  }
+}
