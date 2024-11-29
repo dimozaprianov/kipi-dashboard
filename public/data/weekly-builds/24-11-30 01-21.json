@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2024-11-30T01:21:43.587412+02:00",
+  "Project": "Cryowar",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": false,
+      "DownloadLink": null,
+      "Log": "BhXi7GwwbMeh"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-11-21T18:12:12+02:00",
+    "Sha": "c8bec0fd17ec6e30308fe98e76fc3b2bd6b05a46",
+    "Message": "Set the Visual Effects of Retribution's Abilities (#1009)\n\n* Added visual effects to Retribution's abilities\n\n* Update KipiTech",
+    "Author": "Boris Dimitrov"
+  }
+}
