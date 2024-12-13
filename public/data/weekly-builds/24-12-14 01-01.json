@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2024-12-14T01:01:09.8447665+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1yTtkh7oXMbLQBRcyfuzFVUXMBZ1vlTSS/view?usp=drivesdk",
+      "Log": "W7Ry59cCKpn2"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-12-13T16:14:41+02:00",
+    "Sha": "caa6b264aeaddc2d1664db1caa131fc0c08f08d0",
+    "Message": "Mech_Spider_Variation_03 (#1135)\n\nMech_Spider_Variation_03 Animation Set and Assest",
+    "Author": "miushery"
+  }
+}
