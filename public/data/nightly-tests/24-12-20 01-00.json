@@ -1,0 +1,81 @@
+{
+  "Project": "TwinStickShooter",
+  "TimeStamp": "2024-12-20T01:01:07.5987736+02:00",
+  "CriticalError": null,
+  "CriticalErrorTrace": null,
+  "BuildSuccess": true,
+  "BuildLog": "j5m6cdkW28C0",
+  "BuildWarnings": 148,
+  "TestResults": {
+    "Log": "fTL4evJ4EZIF",
+    "CriticalErrors": false,
+    "TestsTimedOut": false,
+    "Results": [
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Damage_Over_Time",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Damage",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Healing",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Speed_Change",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.AreaOfEffect",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Beam",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Bolt",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Evade",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Instant",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Melee",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Ram",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Spawn",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Teleport",
+        "Result": false
+      }
+    ]
+  },
+  "CrossPlatformBuildResults": [
+    {
+      "Preset": "Windows",
+      "BuildLog": "Y21C9aS2gBJo",
+      "BuildSuccess": true
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-12-19T16:42:38+02:00",
+    "Sha": "27be7927c704a2360683ccfab70f743a7566dc47",
+    "Message": "Audio Naming Clean up - Non-conflict (#1141)\n\n* Deleted unused audio files; Updated MovieClipLevel music with the latest version in order to delete the old one\n\n* Moved all SoundClasses to SoundClass folder\n\n* Moved SoundClasses to SoundClass folder (previous error)\n\n* Deleted unused voiceover audio files\n\n* Moved Sound folder contents to Audio folder; Renamed Prototypes folder to Debug_and_Testing and Weapons folder to Weapons-LegacyFiles\n\n* Renamed Attenuation assets to ATT_ prefix and more appropriate names for each; Deleted unused Attenuation assets.\n\n* Moved all boss sounds to corresponding folders inside Boss folder\n\n* Renamed and reordered all wretch sounds. Due to conflicts enemy weapons will be commited in another PR.\n\n* Moving and renaming environment gameplay sounds\n\n* Moved MetaSound Patches into Patches folder; renamed audio effects files (AFX_) and sound submix files (SSMix_)\n\n* Moved test sounds to Debug_and_Testing folder",
+    "Author": "alshkodrova"
+  }
+}
