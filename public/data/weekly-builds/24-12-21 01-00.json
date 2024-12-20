@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2024-12-21T01:00:10.554955+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1ZIiDDyKwUEckUmCiu4EoEFZSwLjHco8v/view?usp=drivesdk",
+      "Log": "gB6vpAojOepE"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-12-20T17:03:32+02:00",
+    "Sha": "45895ed075f6a5df32688f5e216396e2ca3415f6",
+    "Message": "dynamic controller aim rotation (#1143)",
+    "Author": "Vlado"
+  }
+}
