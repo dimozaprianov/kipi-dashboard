@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2024-12-28T01:01:15.4882944+02:00",
+  "Project": "Cryowar",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": false,
+      "DownloadLink": null,
+      "Log": "2WYdROvAX7tD"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2024-12-04T08:57:42+02:00",
+    "Sha": "614d7349e33edaf4bf269acd032050b943493c09",
+    "Message": "Retribution Skills SFX (#1010)\n\n* Retribution Skills SFX\n\n* New Retribution Scythe SFX after review\n\n* Added On Hit Sounds to Retribution Melee Skills SFX in DT - same sound as Activate Sound",
+    "Author": "alshkodrova"
+  }
+}
