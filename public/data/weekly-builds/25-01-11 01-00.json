@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2025-01-11T01:00:18.9783644+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1eBMCujoeiD5MdaqKw9xurcqFHmZ72MN-/view?usp=drivesdk",
+      "Log": "tBLN94zVDIbb"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2025-01-10T17:06:46+02:00",
+    "Sha": "966636f4acc05e04994c332fe67e0ce5bd896a16",
+    "Message": "clear onspawned delegates on encounter end (#1161)",
+    "Author": "Vlado"
+  }
+}
