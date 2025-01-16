@@ -1,0 +1,81 @@
+{
+  "Project": "TwinStickShooter",
+  "TimeStamp": "2025-01-17T01:01:35.6636683+02:00",
+  "CriticalError": null,
+  "CriticalErrorTrace": null,
+  "BuildSuccess": true,
+  "BuildLog": "rdOyT5cKmTzp",
+  "BuildWarnings": 162,
+  "TestResults": {
+    "Log": "MiNo9wI6xVsz",
+    "CriticalErrors": false,
+    "TestsTimedOut": false,
+    "Results": [
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Damage_Over_Time",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Damage",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Healing",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Speed_Change",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.AreaOfEffect",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Beam",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Bolt",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Evade",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Instant",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Melee",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Ram",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Spawn",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Teleport",
+        "Result": false
+      }
+    ]
+  },
+  "CrossPlatformBuildResults": [
+    {
+      "Preset": "Windows",
+      "BuildLog": "uRmw6GlV62Y9",
+      "BuildSuccess": true
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2025-01-16T16:03:39+02:00",
+    "Sha": "de12969ed3648b728724744069c25cb6603d278e",
+    "Message": "Improved the Jump Attack Ability (#1164)\n\n* Improved the Jump Attack Ability\n\n* Removed the Landing Niagara Effect\n\n* Code review\n\n* QA review\n\n---------\n\nCo-authored-by: Boris Dimitrov <boris1234dimitrov@gmail.com>",
+    "Author": "Boris Dimitrov"
+  }
+}
