@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2025-01-18T01:00:35.2616738+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1nO2zZfaO55SqCdDM37SRLs6gjCHpsqIk/view?usp=drivesdk",
+      "Log": "jpCJRs83JZih"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2025-01-17T16:10:26+02:00",
+    "Sha": "dcc31254de6b5cb0d9af5962fb488ece4f4d559a",
+    "Message": "Added fade in/out animations for all interactable objects (#1167)\n\n* Added fade in/out animations for all interactable objects\n\nForgot to make apply the changes to the rest of the interactable objects\n\nFixed multiple bugs discovered during testing\n\nFixed multiple bugs discovered during testing\n\nBugfix\n\n* Resolved code review issues",
+    "Author": "Boris Rusev"
+  }
+}
