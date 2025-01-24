@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2025-01-25T01:01:08.2319443+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1CGUrvI56c24XOldaAol_2dzBuRULe6CD/view?usp=drivesdk",
+      "Log": "mi2Qfpq1tYBz"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2025-01-23T17:29:49+02:00",
+    "Sha": "26dbfb58ac99d067f6e6668150ac8f381c385bc3",
+    "Message": "BUGFIX: Downed boss covers attempt to lower again after a boss jump (#1178)\n\n* Update KipiTech\n\n* QA review\n\n* QA review",
+    "Author": "Boris Dimitrov"
+  }
+}
