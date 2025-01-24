@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2025-01-25T01:40:09.5268067+02:00",
+  "Project": "Cryowar",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": false,
+      "DownloadLink": null,
+      "Log": "hlkEUAQCS11T"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2025-01-17T13:43:48+02:00",
+    "Sha": "8f468987a25fa8369bbe8c5f6fe2ee1b6bf90f2c",
+    "Message": "Retribution Idle SFX (#1011)",
+    "Author": "alshkodrova"
+  }
+}
