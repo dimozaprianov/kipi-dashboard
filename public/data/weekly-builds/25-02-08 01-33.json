@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2025-02-08T01:00:44.631659+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1TGZ1Y6zjQMPxTExrXkQ0fIYuUYRgRgjo/view?usp=drivesdk",
+      "Log": "b4fEh7zPr02S"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2025-02-07T18:46:17+02:00",
+    "Sha": "560d174575ff6c60fa9ebab5ad9410c5f2150e81",
+    "Message": "Modified RamAbility to skip Melee Animation on impact (#1213)\n\n* Modified the Spider Boss's Charge\n\n* Update KipiTech",
+    "Author": "Boris Dimitrov"
+  }
+}
