@@ -1,0 +1,28 @@
+{
+  "scripts": {
+    "dev": "vike dev",
+    "build": "vike build",
+    "preview": "cross-env NODE_ENV=production tsx ./hono-entry.node.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.8",
+    "@universal-middleware/hono": "^0.4.0",
+    "hono": "^4.6.20",
+    "@universal-middleware/core": "^0.4.0",
+    "solid-js": "^1.9.4",
+    "vike-solid": "^0.7.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "vike": "^0.4.220",
+    "vite": "^6.1.0",
+    "@hono/vite-dev-server": "^0.18.1",
+    "@types/node": "^18.19.75",
+    "tsx": "^4.19.2",
+    "cross-env": "^7.0.3",
+    "tailwindcss": "^4.0.3",
+    "@tailwindcss/vite": "^4.0.3",
+    "daisyui": "^5.0.0-beta.6"
+  },
+  "type": "module"
+}
