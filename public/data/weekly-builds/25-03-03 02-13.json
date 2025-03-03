@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2025-03-03T01:52:05.8109714+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1S-2UkYJRaWL46B7U4hMTJdNoBSZ_P1-y/view?usp=drivesdk",
+      "Log": "rZkMzGg5Wbjn"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2025-02-28T16:53:27+02:00",
+    "Sha": "6c27dafa73312ba4498ba03720c1816c123e7c3d",
+    "Message": "Replaced Wretch_Ranged with the new model (#1255)\n\nReplaced Wretch_Ranged with the new model",
+    "Author": "miushery"
+  }
+}
