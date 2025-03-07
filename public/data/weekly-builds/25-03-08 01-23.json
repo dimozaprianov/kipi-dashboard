@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2025-03-08T01:00:46.6756286+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1ZxPDd6Khn5XHl9Dg0_rdG1jr8CwaFmBb/view?usp=drivesdk",
+      "Log": "yxuY9FQZ1olk"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2025-03-07T11:24:36+02:00",
+    "Sha": "c4ca2860114a523652c2d1d6882646af1e8572b8",
+    "Message": "Added a property to control the gun aiming to fire (#1269)",
+    "Author": "Boris Dimitrov"
+  }
+}
