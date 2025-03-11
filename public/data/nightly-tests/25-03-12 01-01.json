@@ -1,0 +1,81 @@
+{
+  "Project": "TwinStickShooter",
+  "TimeStamp": "2025-03-12T01:01:25.6683419+02:00",
+  "CriticalError": null,
+  "CriticalErrorTrace": null,
+  "BuildSuccess": true,
+  "BuildLog": "uTHl9x2WIfsd",
+  "BuildWarnings": 142,
+  "TestResults": {
+    "Log": "DP1JLfqPDL7f",
+    "CriticalErrors": false,
+    "TestsTimedOut": false,
+    "Results": [
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Damage_Over_Time",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Damage",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Instant_Healing",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Effects.Speed_Change",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.AreaOfEffect",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Beam",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Bolt",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Evade",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Instant",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Melee",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Ram",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Spawn",
+        "Result": false
+      },
+      {
+        "Test": "KipiTech.FeatureTests.Character.Skills.Teleport",
+        "Result": false
+      }
+    ]
+  },
+  "CrossPlatformBuildResults": [
+    {
+      "Preset": "Windows",
+      "BuildLog": "RfesHAW1KW5R",
+      "BuildSuccess": true
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2025-03-11T17:11:21+02:00",
+    "Sha": "6f1da7b6cf252ce32fa5f86f0bbf2abbfa0d42de",
+    "Message": "Legacy_Corridor_Turn_1x1_1W1N_01a finished (#1280)\n\n* Legacy_Corridor_Turn_1x1_1W1N_01a finished\n\n* Nav mesh boundaries fixed to work with the spawners",
+    "Author": "PetarTr"
+  }
+}
