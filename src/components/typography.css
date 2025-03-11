@@ -1,0 +1,58 @@
+@reference "../index.css"
+.title {
+  @apply text-2xl mb-2;
+  &.sm {
+    @apply text-xl;
+  }
+  &.lg {
+    @apply text-3xl;
+  }
+  &.xl {
+    @apply text-5xl;
+  }
+}
+
+.title2 {
+  @apply text-lg;
+  &.sm {
+    @apply text-base;
+  }
+  &.lg {
+    @apply text-xl;
+  }
+  &.xl {
+    @apply text-3xl;
+  }
+}
+
+.subtitle {
+  @apply text-gray-600;
+}
+
+.details {
+  @apply text-gray-700 font-light;
+  @apply text-sm;
+  &.sm {
+    @apply text-xs;
+  }
+  &.lg {
+    @apply text-base;
+  }
+  &.xl {
+    @apply text-lg;
+  }
+}
+
+
+.subtitle, .body, label {
+  @apply text-sm;
+  &.sm {
+    @apply text-xs;
+  }
+  &.lg {
+    @apply text-base;
+  }
+  &.xl {
+    @apply text-lg;
+  }
+}

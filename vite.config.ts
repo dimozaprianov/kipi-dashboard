@@ -1,31 +1,14 @@
-import tailwindcss from "@tailwindcss/vite";
-import vikeSolid from "vike-solid/vite";
-import devServer from "@hono/vite-dev-server";
-import { defineConfig } from "vite";
-import vike from "vike/plugin";
+import { defineConfig } from 'vite';
+import solidPlugin from 'vite-plugin-solid';
+// @ts-ignore
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  plugins: [
-    vike({}),
-    devServer({
-      entry: "hono-entry.ts",
-
-      exclude: [
-        /^\/@.+$/,
-        /.*\.(ts|tsx|vue)($|\?)/,
-        /.*\.(s?css|less)($|\?)/,
-        /^\/favicon\.ico$/,
-        /.*\.(svg|png)($|\?)/,
-        /^\/(public|assets|static)\/.+/,
-        /^\/node_modules\/.*/,
-      ],
-
-      injectClientScript: false,
-    }),
-    vikeSolid(),
-    tailwindcss(),
-  ],
+  plugins: [tailwindcss(), solidPlugin()],
+  server: {
+    port: 3000,
+  },
   build: {
-    target: "es2022",
+    target: 'esnext',
   },
 });
