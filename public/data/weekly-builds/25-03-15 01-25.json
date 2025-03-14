@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2025-03-15T01:00:59.3031643+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1uq42DWCK8QKgV8ig-RWp3ZMsJj28Wx-_/view?usp=drivesdk",
+      "Log": "PrcA0lbnBoUC"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2025-03-14T23:21:22+02:00",
+    "Sha": "4c4ff64601e999a51910b959b531f1badf48aa48",
+    "Message": "Player's Gun aiming and slow refactor (#1286)\n\n* Finalized the aiming system\n\n* QA review\n\n* Fixed merge conflicts",
+    "Author": "Boris Dimitrov"
+  }
+}
