@@ -1,0 +1,18 @@
+{
+  "TimeStamp": "2025-03-29T10:44:07.8177892+02:00",
+  "Project": "TwinStickShooter",
+  "Results": [
+    {
+      "Preset": "Windows",
+      "Success": true,
+      "DownloadLink": "https://drive.google.com/file/d/1i4jzmk20PRQMTLWxENKG_2nL_Uv8p49v/view?usp=drivesdk",
+      "Log": "7Qv07tgmOjN6"
+    }
+  ],
+  "CommitInfo": {
+    "TimeStamp": "2025-03-28T15:51:19+02:00",
+    "Sha": "7e77aafeeb26d5a164b90f07c47837a020ccdafc",
+    "Message": "Rotating the remaining static fans (#1358)",
+    "Author": "SvetoslavAlexandrov"
+  }
+}
