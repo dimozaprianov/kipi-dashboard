@@ -54,7 +54,7 @@ function Project(props: {project: DashboardWeeklyReport}) {
     const list = createAsync(async () => {
         if (!props.project)
             return []
-        const reportsClient = new ReportsClient()
+        const reportsClient = new ReportsClient(import.meta.env.VITE_CI_SERVER)
         return  await reportsClient.getWeekly(page(), props.project.project)
     })
 
@@ -109,7 +109,7 @@ function Project(props: {project: DashboardWeeklyReport}) {
 }
 
 export const Weekly: Component = () => {
-    const reportsClient = new ReportsClient()
+    const reportsClient = new ReportsClient(import.meta.env.VITE_CI_SERVER)
     const projects = createAsync(async () => await reportsClient.getWeeklyInitial(1))
 
     return (

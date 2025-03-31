@@ -1,6 +1,6 @@
 import { createSignal, For } from "solid-js";
 import { ErrorIcon, SuccessIcon } from "./icons";
-import {TestResults} from "../api/apiClient";
+import {ReportsClient, TestResults} from "../api/apiClient";
 import {Dialog, DialogContent, DialogFooter, DialogHeader} from "../shadcn/components/ui/dialog";
 import {LogViewer} from "./logViewer";
 import {Button} from "../shadcn/components/ui/button";
@@ -18,8 +18,8 @@ export function SectionDetails(props: SectionDetailsProps) {
 
     async function downloadLogContent() {
         if (props.log) {
-            const response = await fetch(`/kipi-dashboard/data/logs/${props.log}`);
-            setLogText(await response.text());
+            const reportsClient = new ReportsClient(import.meta.env.VITE_CI_SERVER)
+            setLogText(await reportsClient.getLog(props.log));
         }
     }
 

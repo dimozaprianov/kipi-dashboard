@@ -24,7 +24,7 @@ export function Project (props: {project: DashboardNightlyReport}) {
     const list = createAsync(async () => {
         if (!props.project)
             return []
-        const reportsClient = new ReportsClient()
+        const reportsClient = new ReportsClient(import.meta.env.VITE_CI_SERVER)
         return  await reportsClient.getNightly(page(), props.project.project)
     })
 
@@ -91,7 +91,7 @@ export function Project (props: {project: DashboardNightlyReport}) {
 }
 
 export const Nightly: Component = () => {
-    const reportsClient = new ReportsClient()
+    const reportsClient = new ReportsClient(import.meta.env.VITE_CI_SERVER)
     const [projects, {setStore}] =
         createStoreResource(async () => await reportsClient.getNightlyInitial())
 

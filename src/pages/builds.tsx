@@ -72,7 +72,7 @@ function Actions(props: TActions) {
 }
 
 export function Builds() {
-    const buildsClient = new BuildsClient()
+    const buildsClient = new BuildsClient(import.meta.env.VITE_CI_SERVER)
     const projects = createAsync(() => buildsClient.getPresets())
     const [builds, {refetch, setStore}] = createStoreResource(() => buildsClient.getBuilds())
     const [selectedProject, setSelectedProject] = createSignal<string | undefined>(undefined)
