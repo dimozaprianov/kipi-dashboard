@@ -27,7 +27,7 @@ interface IGitLogEntry {
     Author: string;
 }
 
-interface INightlyDevTestsResult extends IBuildResult {
+export interface INightlyDevTestsResult extends IBuildResult {
     Project: string;
     TimeStamp: Date;
     CriticalError?: string;

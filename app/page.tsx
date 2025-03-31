@@ -11,6 +11,7 @@ import {CommitInfo} from "@/components/commitInfo";
 import {IWeeklyBuildResult, IWeeklyBuildResults} from "@/data-types/weeklyBuilds";
 import {SectionDetails} from "@/components/sectionDetails";
 import {filter} from "lodash";
+import {INightlyDevTestsResult} from "@/data-types/nightlyTests";
 
 async function readTestsData<T>(folderPath: string): Promise<T[]> {
     // Replace with your folder path
