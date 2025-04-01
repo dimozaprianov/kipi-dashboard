@@ -1,6 +1,6 @@
 import {createAsync} from "@solidjs/router";
 import {BuildsClient, EScheduledBuildStatus, ScheduledBuild} from "../api/apiClient";
-import {createEffect, createSignal, For, Match, onCleanup, Show, Switch} from "solid-js";
+import {createEffect, createMemo, createSignal, For, Match, onCleanup, Show, Switch} from "solid-js";
 import {Tab, TabsContent, TabsIndicator, TabsList, TabsTrigger} from "../shadcn/components/ui/tab";
 import {T} from "../components/typography";
 import {LoadingIndicator} from "../components/loadingIndicator";
@@ -20,6 +20,7 @@ import {Badge} from "../shadcn/components/ui/badge";
 import "../components/buildingIndicator.css"
 import {createStoreResource} from "../utils/resources";
 import {LogViewer} from "../components/logViewer";
+import {isEqual} from "lodash";
 
 function StatusBadge(props: {status: EScheduledBuildStatus}) {
     return <Switch fallback={<div>Not Found</div>}>
@@ -73,6 +74,7 @@ function Actions(props: TActions) {
 
 export function Builds() {
     const buildsClient = new BuildsClient(import.meta.env.VITE_CI_SERVER)
+    const cachedProjects = createAsync(() => buildsClient.getCachedPresets())
     const projects = createAsync(() => buildsClient.getPresets())
     const [builds, {refetch, setStore}] = createStoreResource(() => buildsClient.getBuilds())
     const [selectedProject, setSelectedProject] = createSignal<string | undefined>(undefined)
@@ -96,6 +98,16 @@ export function Builds() {
         }
     }
 
+    const getProjects = createMemo(() => {
+        const projectsRef = projects()
+        const cachedProjectsRef = cachedProjects()
+
+        if (!projectsRef)
+            return cachedProjectsRef
+        if (isEqual(projectsRef, cachedProjects))
+            return cachedProjectsRef
+        return projectsRef
+    })
 
     createEffect(() => {
         const timeout = setInterval(() => refetch(), 1000)
@@ -109,7 +121,7 @@ export function Builds() {
                 <AlertDialogHeader>
                     <AlertDialogTitle>Confirm Build Start</AlertDialogTitle>
                     <AlertDialogDescription>
-                        Start the build for {selectedProject() ?? projects()[0].id} with preset {selectedPreset()}
+                        Start the build for {selectedProject() ?? getProjects()[0].id} with preset {selectedPreset()}
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
@@ -121,15 +133,15 @@ export function Builds() {
         <div class="flex flex-row gap-2">
             <div class="w-1/3">
                 <T variant="title2">Projects</T>
-                <Show when={projects()} fallback={<LoadingIndicator/>}>
-                    <Tab defaultValue={projects()[0].id} onChange={v => setSelectedProject(v)}>
+                <Show when={getProjects()} fallback={<LoadingIndicator/>}>
+                    <Tab defaultValue={getProjects()[0].id} onChange={v => setSelectedProject(v)}>
                         <TabsList class="w-fit">
-                            <For each={projects() ?? []}>
+                            <For each={getProjects() ?? []}>
                                 {(project) => (<TabsTrigger class="w-fit" value={project.id}>{project.id}</TabsTrigger>)}
                             </For>
                             <TabsIndicator />
                         </TabsList>
-                            <For each={projects() ?? []}>
+                            <For each={getProjects() ?? []}>
                                 {(project) => (
                                     <TabsContent value={project.id} class="grid">
                                         <T variant="title2">Presets:</T>
