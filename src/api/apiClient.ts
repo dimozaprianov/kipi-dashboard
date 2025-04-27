@@ -202,6 +202,84 @@ export class BuildsClient {
         return Promise.resolve<ProjectPresets[]>(null as any);
     }
 
+    getBranches(project: string | undefined): Promise<string[]> {
+        let url_ = this.baseUrl + "/api/Builds/branches?";
+        if (project === null)
+            throw new Error("The parameter 'project' cannot be null.");
+        else if (project !== undefined)
+            url_ += "project=" + encodeURIComponent("" + project) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processGetBranches(_response);
+        });
+    }
+
+    protected processGetBranches(response: Response): Promise<string[]> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+                let result200: any = null;
+                result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as string[];
+                return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+                return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<string[]>(null as any);
+    }
+
+    getLogs(project: string | undefined, branch: string | undefined): Promise<GitHubCommit[]> {
+        let url_ = this.baseUrl + "/api/Builds/commits?";
+        if (project === null)
+            throw new Error("The parameter 'project' cannot be null.");
+        else if (project !== undefined)
+            url_ += "project=" + encodeURIComponent("" + project) + "&";
+        if (branch === null)
+            throw new Error("The parameter 'branch' cannot be null.");
+        else if (branch !== undefined)
+            url_ += "branch=" + encodeURIComponent("" + branch) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processGetLogs(_response);
+        });
+    }
+
+    protected processGetLogs(response: Response): Promise<GitHubCommit[]> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+                let result200: any = null;
+                result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GitHubCommit[];
+                return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+                return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<GitHubCommit[]>(null as any);
+    }
+
     updateStatus(request: UpdateStatusRequest): Promise<FileResponse | null> {
         let url_ = this.baseUrl + "/api/Builds/update-status";
         url_ = url_.replace(/[?&]$/, "");
@@ -381,12 +459,8 @@ export class ReportsClient {
         this.baseUrl = baseUrl ?? "http://localhost:3661";
     }
 
-    getWeeklyInitial(page: number | undefined): Promise<DashboardWeeklyReport[]> {
-        let url_ = this.baseUrl + "/api/Reports/weekly/initial?";
-        if (page === null)
-            throw new Error("The parameter 'page' cannot be null.");
-        else if (page !== undefined)
-            url_ += "page=" + encodeURIComponent("" + page) + "&";
+    getWeeklyInitial(): Promise<DashboardReport[]> {
+        let url_ = this.baseUrl + "/api/Reports/weekly/initial";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: RequestInit = {
@@ -401,13 +475,13 @@ export class ReportsClient {
         });
     }
 
-    protected processGetWeeklyInitial(response: Response): Promise<DashboardWeeklyReport[]> {
+    protected processGetWeeklyInitial(response: Response): Promise<DashboardReport[]> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
                 let result200: any = null;
-                result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as DashboardWeeklyReport[];
+                result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as DashboardReport[];
                 return result200;
             });
         } else if (status !== 200 && status !== 204) {
@@ -415,10 +489,10 @@ export class ReportsClient {
                 return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<DashboardWeeklyReport[]>(null as any);
+        return Promise.resolve<DashboardReport[]>(null as any);
     }
 
-    getNightlyInitial(): Promise<DashboardNightlyReport[]> {
+    getNightlyInitial(): Promise<DashboardReport[]> {
         let url_ = this.baseUrl + "/api/Reports/nightly/initial";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -434,13 +508,13 @@ export class ReportsClient {
         });
     }
 
-    protected processGetNightlyInitial(response: Response): Promise<DashboardNightlyReport[]> {
+    protected processGetNightlyInitial(response: Response): Promise<DashboardReport[]> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
                 let result200: any = null;
-                result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as DashboardNightlyReport[];
+                result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as DashboardReport[];
                 return result200;
             });
         } else if (status !== 200 && status !== 204) {
@@ -448,10 +522,10 @@ export class ReportsClient {
                 return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<DashboardNightlyReport[]>(null as any);
+        return Promise.resolve<DashboardReport[]>(null as any);
     }
 
-    getNightly(page: number | undefined, project: string | undefined): Promise<NightlyDevTestsResults[]> {
+    getNightly(page: number | undefined, project: string | undefined): Promise<PeriodicTestsResult[]> {
         let url_ = this.baseUrl + "/api/Reports/nightly?";
         if (page === null)
             throw new Error("The parameter 'page' cannot be null.");
@@ -475,13 +549,13 @@ export class ReportsClient {
         });
     }
 
-    protected processGetNightly(response: Response): Promise<NightlyDevTestsResults[]> {
+    protected processGetNightly(response: Response): Promise<PeriodicTestsResult[]> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
                 let result200: any = null;
-                result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as NightlyDevTestsResults[];
+                result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PeriodicTestsResult[];
                 return result200;
             });
         } else if (status !== 200 && status !== 204) {
@@ -489,10 +563,10 @@ export class ReportsClient {
                 return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<NightlyDevTestsResults[]>(null as any);
+        return Promise.resolve<PeriodicTestsResult[]>(null as any);
     }
 
-    getWeekly(page: number | undefined, project: string | undefined): Promise<WeeklyBuildResults[]> {
+    getWeekly(page: number | undefined, project: string | undefined): Promise<PeriodicTestsResult[]> {
         let url_ = this.baseUrl + "/api/Reports/weekly?";
         if (page === null)
             throw new Error("The parameter 'page' cannot be null.");
@@ -516,13 +590,13 @@ export class ReportsClient {
         });
     }
 
-    protected processGetWeekly(response: Response): Promise<WeeklyBuildResults[]> {
+    protected processGetWeekly(response: Response): Promise<PeriodicTestsResult[]> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
                 let result200: any = null;
-                result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as WeeklyBuildResults[];
+                result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PeriodicTestsResult[];
                 return result200;
             });
         } else if (status !== 200 && status !== 204) {
@@ -530,7 +604,7 @@ export class ReportsClient {
                 return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<WeeklyBuildResults[]>(null as any);
+        return Promise.resolve<PeriodicTestsResult[]>(null as any);
     }
 
     getLog(id: string | undefined): Promise<string> {
@@ -627,6 +701,12 @@ export interface ProjectPresets {
     presets: string[];
 }
 
+export interface GitHubCommit {
+    sha: string;
+    log: string;
+    author: string;
+}
+
 export interface UpdateStatusRequest {
     id: string;
     status: EScheduledBuildStatus;
@@ -642,45 +722,17 @@ export interface SetResultRequest {
     result: string;
 }
 
-export interface DashboardWeeklyReport {
+export interface DashboardReport {
     project: string;
-    weeklyCount: number;
+    count: number;
 }
 
-export interface DashboardNightlyReport {
+export interface PeriodicTestsResult {
     project: string;
-    nightlyCount: number;
-}
-
-export interface NightlyDevTestsResults {
-    project?: string | undefined;
     timeStamp: Date;
-    criticalError?: string | undefined;
-    criticalErrorTrace?: string | undefined;
-    buildSuccess: boolean;
-    buildLog?: string | undefined;
-    buildWarnings: number;
-    testResults?: TestResults | undefined;
-    crossPlatformBuildResults: CrossPlatformBuildAttempt[];
     commitInfo: GitLogEntry;
-}
-
-export interface TestResults {
-    log: string;
-    criticalErrors: boolean;
-    testsTimedOut: boolean;
-    results: TestResult[];
-}
-
-export interface TestResult {
-    test: string;
-    result: boolean;
-}
-
-export interface CrossPlatformBuildAttempt {
-    preset: string;
-    buildLog?: string | undefined;
-    buildSuccess: boolean;
+    platformTests: { [key: string]: PlatformTests; };
+    platformFullBuilds: { [key: string]: PlatformFullBuild; };
 }
 
 export interface GitLogEntry {
@@ -690,18 +742,27 @@ export interface GitLogEntry {
     author: string;
 }
 
-export interface WeeklyBuildResults {
-    project: string;
-    timeStamp: Date;
-    results: WeeklyBuildResult[];
-    commitInfo: GitLogEntry;
+export interface PlatformTests {
+    platform: string;
+    buildLog: string;
+    testsLog: string;
+    compilationWarnings: number;
+    buildSuccess: boolean;
+    testsCriticalErrors: boolean;
+    testsTimedOut: boolean;
+    results: TestResult[];
 }
 
-export interface WeeklyBuildResult {
-    preset: string;
-    success: boolean;
-    downloadLink?: string | undefined;
+export interface TestResult {
+    test: string;
+    result: boolean;
+}
+
+export interface PlatformFullBuild {
     log?: string | undefined;
+    success: boolean;
+    link?: string | undefined;
+    preset: string;
 }
 
 export interface FileResponse {

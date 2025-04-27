@@ -2,7 +2,7 @@ import {Component, createEffect, For, onCleanup, Show} from "solid-js";
 import {createResource} from "solid-js";
 import {HeartbeatClient, TrackedService} from "../api/monitoringApi";
 import {Card, CardContent, CardDescription, CardHeader} from "../shadcn/components/ui/card";
-import {formatDistanceStrict, formatDistanceToNow} from "date-fns";
+import {formatDistanceStrict} from "date-fns";
 import {ErrorIcon, SuccessIcon} from "../components/icons";
 import {T} from "../components/typography";
 import {ReportsClient} from "../api/apiClient";

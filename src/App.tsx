@@ -2,8 +2,8 @@ import type { Component } from 'solid-js';
 import {Route, Router} from "@solidjs/router";
 import {Home} from "./pages/home";
 import LayoutDefault from "./layouts/LayoutDefault";
-import {Nightly} from "./pages/nightlyResults";
-import {Weekly} from "./pages/weeklyResults";
+import {Nightly} from "./pages/buildResults";
+import {Weekly} from "./pages/buildResults";
 import {Builds} from "./pages/builds";
 
 const App: Component = () => {

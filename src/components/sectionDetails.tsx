@@ -1,15 +1,15 @@
 import { createSignal, For } from "solid-js";
 import { ErrorIcon, SuccessIcon } from "./icons";
-import {ReportsClient, TestResults} from "../api/apiClient";
 import {Dialog, DialogContent, DialogFooter, DialogHeader} from "../shadcn/components/ui/dialog";
 import {LogViewer} from "./logViewer";
 import {Button} from "../shadcn/components/ui/button";
+import {ReportsClient, TestResult} from "../api/apiClient";
 
 type SectionDetailsProps = {
     desc: string;
     log?: string;
     download?: string;
-    testResults?: TestResults;
+    testResults?: TestResult[];
 };
 
 export function SectionDetails(props: SectionDetailsProps) {
@@ -18,8 +18,9 @@ export function SectionDetails(props: SectionDetailsProps) {
 
     async function downloadLogContent() {
         if (props.log) {
-            const reportsClient = new ReportsClient(import.meta.env.VITE_CI_SERVER)
-            setLogText(await reportsClient.getLog(props.log));
+            const client = new ReportsClient(import.meta.env.VITE_CI_SERVER)
+            const log = await client.getLog(props.log);
+            setLogText(log)
         }
     }
 
@@ -33,7 +34,7 @@ export function SectionDetails(props: SectionDetailsProps) {
                 <DialogContent>
                     <DialogHeader>{props.desc}</DialogHeader>
                     <div class="flex flex-col gap-1">
-                        <For each={props.testResults?.results}>
+                        <For each={props.testResults}>
                             {(r) => (
                                 <div class="flex flex-row flex-nowrap items-center gap-2">
                                     {r.result ? <SuccessIcon class="text-success" /> : <ErrorIcon class="text-error" />}

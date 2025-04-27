@@ -12,7 +12,7 @@ export function CommitInfo(props: { commit: GitLogEntry }) {
                 class="flex grow-1 link-neutral cursor-pointer select-none"
                 onClick={() => setVisible(!visible())}
             >
-                <T variant="details">Commit Info</T>
+                <T variant="link-details" class="text-blue-600 font-bold">Commit Info</T>
             </a>
             <div class={(visible() ? "" : "hidden") + " flex flex-col col-span-2 border-l border-l-gray-300 pl-5 py-1 mb-2 "}>
                 <T variant="body">

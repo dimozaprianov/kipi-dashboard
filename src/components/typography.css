@@ -43,6 +43,20 @@
   }
 }
 
+.link-details {
+  @apply text-teal-800 font-normal;
+  @apply text-sm;
+  &.sm {
+    @apply text-xs;
+  }
+  &.lg {
+    @apply text-base;
+  }
+  &.xl {
+    @apply text-lg;
+  }
+}
+
 
 .subtitle, .body, label {
   @apply text-sm;
