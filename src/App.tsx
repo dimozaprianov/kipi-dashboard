@@ -4,7 +4,7 @@ import {Home} from "./pages/home";
 import LayoutDefault from "./layouts/LayoutDefault";
 import {Nightly} from "./pages/buildResults";
 import {Weekly} from "./pages/buildResults";
-import {Builds} from "./pages/builds";
+import {BuildOnDemand} from "./pages/buildOnDemand";
 
 const App: Component = () => {
   return (
@@ -13,7 +13,7 @@ const App: Component = () => {
           <Route path="/" component={Home} />
           <Route path="/nightly" component={Nightly} />
           <Route path="/weekly" component={Weekly} />
-          <Route path="/builds" component={Builds} />
+          <Route path="/builds" component={BuildOnDemand} />
         </Route>
       </Router>
   );

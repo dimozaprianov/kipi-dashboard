@@ -24,7 +24,7 @@
     "vite-plugin-solid": "^2.11.1"
   },
   "dependencies": {
-    "@kobalte/core": "^0.13.8",
+    "@kobalte/core": "^0.13.9",
     "@solidjs/router": "^0.15.3",
     "@tailwindcss/vite": "^4.0.6",
     "class-variance-authority": "^0.7.1",

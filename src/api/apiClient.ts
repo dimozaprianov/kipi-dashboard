@@ -95,7 +95,7 @@ export class BuildsClient {
         return Promise.resolve<ScheduledBuild[]>(null as any);
     }
 
-    queueBuild(project: string | undefined, preset: string | undefined): Promise<string> {
+    queueBuild(project: string | undefined, preset: string | undefined, sha: string | null | undefined): Promise<string> {
         let url_ = this.baseUrl + "/api/Builds/queue-build?";
         if (project === null)
             throw new Error("The parameter 'project' cannot be null.");
@@ -105,6 +105,8 @@ export class BuildsClient {
             throw new Error("The parameter 'preset' cannot be null.");
         else if (preset !== undefined)
             url_ += "preset=" + encodeURIComponent("" + preset) + "&";
+        if (sha !== undefined && sha !== null)
+            url_ += "sha=" + encodeURIComponent("" + sha) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: RequestInit = {
@@ -136,41 +138,12 @@ export class BuildsClient {
         return Promise.resolve<string>(null as any);
     }
 
-    getCachedPresets(): Promise<ProjectPresets[]> {
-        let url_ = this.baseUrl + "/api/Builds/get-cached-presets";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processGetCachedPresets(_response);
-        });
-    }
-
-    protected processGetCachedPresets(response: Response): Promise<ProjectPresets[]> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 200) {
-            return response.text().then((_responseText) => {
-                let result200: any = null;
-                result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProjectPresets[];
-                return result200;
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-                return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<ProjectPresets[]>(null as any);
-    }
-
-    getPresets(): Promise<ProjectPresets[]> {
-        let url_ = this.baseUrl + "/api/Builds/get-presets";
+    getPresets(upToDate: boolean | undefined): Promise<ProjectPresets[]> {
+        let url_ = this.baseUrl + "/api/Builds/presets?";
+        if (upToDate === null)
+            throw new Error("The parameter 'upToDate' cannot be null.");
+        else if (upToDate !== undefined)
+            url_ += "upToDate=" + encodeURIComponent("" + upToDate) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: RequestInit = {
@@ -202,12 +175,16 @@ export class BuildsClient {
         return Promise.resolve<ProjectPresets[]>(null as any);
     }
 
-    getBranches(project: string | undefined): Promise<string[]> {
+    getBranches(project: string | undefined, upToDate: boolean | undefined): Promise<string[]> {
         let url_ = this.baseUrl + "/api/Builds/branches?";
         if (project === null)
             throw new Error("The parameter 'project' cannot be null.");
         else if (project !== undefined)
             url_ += "project=" + encodeURIComponent("" + project) + "&";
+        if (upToDate === null)
+            throw new Error("The parameter 'upToDate' cannot be null.");
+        else if (upToDate !== undefined)
+            url_ += "upToDate=" + encodeURIComponent("" + upToDate) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: RequestInit = {
@@ -239,7 +216,7 @@ export class BuildsClient {
         return Promise.resolve<string[]>(null as any);
     }
 
-    getLogs(project: string | undefined, branch: string | undefined): Promise<GitHubCommit[]> {
+    getCommits(project: string | undefined, branch: string | undefined, upToDate: boolean | undefined): Promise<GitHubCommit[]> {
         let url_ = this.baseUrl + "/api/Builds/commits?";
         if (project === null)
             throw new Error("The parameter 'project' cannot be null.");
@@ -249,6 +226,10 @@ export class BuildsClient {
             throw new Error("The parameter 'branch' cannot be null.");
         else if (branch !== undefined)
             url_ += "branch=" + encodeURIComponent("" + branch) + "&";
+        if (upToDate === null)
+            throw new Error("The parameter 'upToDate' cannot be null.");
+        else if (upToDate !== undefined)
+            url_ += "upToDate=" + encodeURIComponent("" + upToDate) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: RequestInit = {
@@ -259,11 +240,11 @@ export class BuildsClient {
         };
 
         return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processGetLogs(_response);
+            return this.processGetCommits(_response);
         });
     }
 
-    protected processGetLogs(response: Response): Promise<GitHubCommit[]> {
+    protected processGetCommits(response: Response): Promise<GitHubCommit[]> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -683,6 +664,7 @@ export interface ScheduledBuild {
     timeStamp: Date;
     project: string;
     preset: string;
+    sha?: string | undefined;
     status: EScheduledBuildStatus;
     link: string;
     log: string;
@@ -699,12 +681,14 @@ export enum EScheduledBuildStatus {
 export interface ProjectPresets {
     id: string;
     presets: string[];
+    branches: string[];
 }
 
 export interface GitHubCommit {
     sha: string;
     log: string;
     author: string;
+    timeStamp: Date;
 }
 
 export interface UpdateStatusRequest {
