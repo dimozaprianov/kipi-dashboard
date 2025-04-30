@@ -53,7 +53,7 @@ function Actions(props: TActions) {
         <Show when={props.build.status !== EScheduledBuildStatus.Queued}>
             <Button size="xs" variant="outline" onClick={() => setLogOpened(true)}>log</Button>
         </Show>
-        <Show when={props.build.link}>
+        <Show when={props.build?.link}>
             <Button variant="outline" size="xs">
                 <a href={props.build.link}>
                     <svg width="14px" height="14px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -194,7 +194,7 @@ export function BuildOnDemand() {
     })
 
     createEffect(() => {
-        const timeout = setInterval(() => refetch(), 1000)
+        const timeout = setInterval(() => !["ready", "errored"].includes(builds.state) && refetch(), 1000)
         onCleanup(() => clearInterval(timeout))
     })
 

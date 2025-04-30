@@ -51,27 +51,27 @@ interface PassedTestsEntryProps {
     icon: JSX.Element;
     title: string;
     detailsTitle?: string;
-    entry: PlatformTests;
+    entry?: PlatformTests;
 }
 
 export const PassedTestsEntry: Component<PassedTestsEntryProps> = (props) => {
     const {icon, title, detailsTitle, entry} = props;
     const common = {
-        log: props.entry.testsLog,
+        log: entry?.testsLog,
         icon,
         title,
         detailsTitle,
-        testResults: entry.results,
+        testResults: entry?.results,
     };
 
     return (
         <Show
-            when={entry.buildSuccess && !entry.testsCriticalErrors && !entry.testsTimedOut}
+            when={entry && entry.buildSuccess && !entry.testsCriticalErrors && !entry.testsTimedOut}
             fallback={
-                <Show when={!entry.buildSuccess}
+                <Show when={!entry?.buildSuccess}
                       fallback={
-                          <Show when={entry.testsCriticalErrors} fallback={
-                              <Show when={entry.testsTimedOut}
+                          <Show when={entry?.testsCriticalErrors} fallback={
+                              <Show when={entry?.testsTimedOut}
                                     fallback={
                                         <StatEntry {...common} result="Timed Out" status={EVisualStatus.Error}/>
                                     }>
@@ -147,7 +147,7 @@ export const PlatformFullBuildResult = (props: PlatformFullBuildResultProps) => 
             title: props.title,
             detailsTitle: props.detailsTitle,
             log: props.entry?.log,
-            download: props.entry.link
+            download: props.entry?.link
         }
     };
 

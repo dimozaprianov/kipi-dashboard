@@ -10,13 +10,17 @@ import {cn} from "../shadcn/libs/cn";
 
 
 export const Home: Component = () => {
-    const [result] = createResource<TrackedService[]>(async () => {
+    const [result, {refetch: refetchHeartbeat}] = createResource<TrackedService[]>(async () => {
         const client = new HeartbeatClient("https://dev.kipiinteractive.com")
         return await client.trackedServices()
     })
     const [systemActivity, {refetch}] = createResource<string[]>(async () => {
         const client = new ReportsClient(import.meta.env.VITE_CI_SERVER)
         return await client.getSystemLog()
+    })
+    createEffect(() => {
+        const interval = setInterval(() => refetchHeartbeat(), 3000)
+        onCleanup(() => clearInterval(interval))
     })
 
     createEffect(() => {
@@ -25,7 +29,7 @@ export const Home: Component = () => {
     })
 
     return <div class="p-24 py-8">
-        <T variant="title2" size="xl" class="mb-4">Continuous Integration Services Status</T>
+        <T variant="title2" size="xl" class="mb-4">Continuous Integration Last Heartbeat</T>
         <div class="flex flex-row flex-wrap">
             <For each={result()}>
                 {service => <Card class="w-fit">
@@ -35,7 +39,7 @@ export const Home: Component = () => {
                     <CardContent>
                         <CardDescription>
                             <For each={service.signals}>
-                                {signal => <div>{signal.id} [{formatDistanceStrict(signal.lastHeartbeat, Date.now())}]</div>}
+                                {signal => <div>{signal.id} [{formatDistanceStrict(signal.lastHeartbeat, Date.now())} ago]</div>}
                             </For>
                         </CardDescription>
                     </CardContent>
@@ -45,7 +49,7 @@ export const Home: Component = () => {
         <T variant="title2" size="xl" class="mt-4 mb-2">System Activity Logging</T>
         <For each={systemActivity()}>
             {(activity, idx) =>
-               <div class={cn("w-fit ml-3 font-mono", idx() === 0 ? "text-foreground" : "text-muted-foreground")}>
+               <div class={cn("w-fit ml-3 font-mono", idx() === 0 ? "text-foreground font-semibold" : "text-muted-foreground")}>
                     <T variant="body">{activity}</T>
                </div>
             }
