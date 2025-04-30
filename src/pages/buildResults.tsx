@@ -67,13 +67,13 @@ function projectFullBuild(platform: string, title: string, detailsTitle: string,
 }
 
 const columns = [
-    projectCompilation("Windows", "Windows", "Windows Compilation", () => <WinIcon/>),
+    projectCompilation("Windows", "Windows Compilation", "Windows Compilation", () => <WinIcon/>),
     projectTests("Windows", "Tests", "Test Results", () => <TestIcon/>),
-    projectCompilation("Android", "Android", "Android Compilation", () => <AndroidIcon/>),
-    projectFullBuild("WindowsNightly", "Weekly Windows", "Weekly Windows Build", () => <WinIcon/>),
-    projectFullBuild("WindowsAndroid", "Weekly Android", "Weekly Android Build", () => <AndroidIcon/>),
-    projectFullBuild("SteamNightly", "Nightly Steam", "Nightly Steam Build", () => <SteamIcon/>),
-    projectFullBuild("SteamWeekly", "Weekly Steam", "Weekly Steam Build", () => <SteamIcon/>),
+    projectCompilation("Android", "Android Compilation", "Android Compilation", () => <AndroidIcon/>),
+    projectFullBuild("WindowsNightly", "Windows", "Weekly Windows build", () => <WinIcon/>),
+    projectFullBuild("WindowsAndroid", "Android", "Weekly Android build", () => <AndroidIcon/>),
+    projectFullBuild("SteamNightly", "Steam", "Build uploaded to Steam branch 'nightly'", () => <SteamIcon/>),
+    projectFullBuild("SteamWeekly", "Steam", "Build uploaded to Steam, branch 'weekly'", () => <SteamIcon/>),
 ]
 
 function getFilteredColumns(data: PeriodicTestsResult[]) {

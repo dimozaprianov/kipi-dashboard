@@ -20,7 +20,7 @@ export default function LayoutDefault(props: { class?: string, children?: JSX.El
                         <NavigationMenuTrigger as="a" href="/">Status</NavigationMenuTrigger>
                         <NavigationMenuTrigger as="a" href="/nightly">Nightly</NavigationMenuTrigger>
                         <NavigationMenuTrigger as="a" href="/weekly">Weekly</NavigationMenuTrigger>
-                        <NavigationMenuTrigger as="a" href="/builds">Builds</NavigationMenuTrigger>
+                        <NavigationMenuTrigger as="a" href="/builds">Build On Demand</NavigationMenuTrigger>
                     </NavigationMenu>
                 </div>
             </nav>
