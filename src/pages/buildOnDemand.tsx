@@ -162,7 +162,7 @@ export function BuildOnDemand() {
         const selectedProjectId = selectedProject()
         const project = find(projects.value, v => v.id === selectedProjectId)
 
-        return project?.branches ?? []
+        return project?.branches?.list ?? []
     }
 
     createEffect(() => {
@@ -176,20 +176,38 @@ export function BuildOnDemand() {
             untrack(async () => {
                 const branches = await buildsClient.getBranches(selectedProjectId, true)
                 setProjectsStore("value", selectedProjectIdx, "branches", branches)
+                setSelectedBranch(branches.defaultBranch)
             })
+        } else {
+            if (!selectedBranch()) {
+                setSelectedBranch(project.branches.defaultBranch)
+            }
         }
     })
 
     createEffect(() => {
+        if (!commits.value)
+            return
+
+        const commitsList = commits.value
+        if (!selectedCommit() && commitsList.length > 0)
+            setSelectedCommit(commitsList[0].sha)
+    })
+
+    createEffect(() => {
         if (selectedBranch()) {
+            changeCommits([])
+            setSelectedCommit(undefined)
             refetchCommits()
         }
     })
 
     createEffect(() => {
         if (selectedProject()) {
+            changeCommits([])
             setSelectedBranch(undefined)
             setSelectedPreset(undefined)
+            setSelectedCommit(undefined)
         }
     })
 

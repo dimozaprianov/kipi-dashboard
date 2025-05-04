@@ -138,7 +138,7 @@ export class BuildsClient {
         return Promise.resolve<string>(null as any);
     }
 
-    getPresets(upToDate: boolean | undefined): Promise<ProjectPresets[]> {
+    getPresets(upToDate: boolean | undefined): Promise<BuildableProjectInfo[]> {
         let url_ = this.baseUrl + "/api/Builds/presets?";
         if (upToDate === null)
             throw new Error("The parameter 'upToDate' cannot be null.");
@@ -158,13 +158,13 @@ export class BuildsClient {
         });
     }
 
-    protected processGetPresets(response: Response): Promise<ProjectPresets[]> {
+    protected processGetPresets(response: Response): Promise<BuildableProjectInfo[]> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
                 let result200: any = null;
-                result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProjectPresets[];
+                result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as BuildableProjectInfo[];
                 return result200;
             });
         } else if (status !== 200 && status !== 204) {
@@ -172,10 +172,10 @@ export class BuildsClient {
                 return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<ProjectPresets[]>(null as any);
+        return Promise.resolve<BuildableProjectInfo[]>(null as any);
     }
 
-    getBranches(project: string | undefined, upToDate: boolean | undefined): Promise<string[]> {
+    getBranches(project: string | undefined, upToDate: boolean | undefined): Promise<ProjectBranches> {
         let url_ = this.baseUrl + "/api/Builds/branches?";
         if (project === null)
             throw new Error("The parameter 'project' cannot be null.");
@@ -199,13 +199,13 @@ export class BuildsClient {
         });
     }
 
-    protected processGetBranches(response: Response): Promise<string[]> {
+    protected processGetBranches(response: Response): Promise<ProjectBranches> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
                 let result200: any = null;
-                result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as string[];
+                result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProjectBranches;
                 return result200;
             });
         } else if (status !== 200 && status !== 204) {
@@ -213,7 +213,7 @@ export class BuildsClient {
                 return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<string[]>(null as any);
+        return Promise.resolve<ProjectBranches>(null as any);
     }
 
     getCommits(project: string | undefined, branch: string | undefined, upToDate: boolean | undefined): Promise<GitHubCommit[]> {
@@ -678,10 +678,15 @@ export enum EScheduledBuildStatus {
     Archived = 4,
 }
 
-export interface ProjectPresets {
+export interface BuildableProjectInfo {
     id: string;
     presets: string[];
-    branches: string[];
+    branches: ProjectBranches;
+}
+
+export interface ProjectBranches {
+    defaultBranch: string;
+    list: string[];
 }
 
 export interface GitHubCommit {
