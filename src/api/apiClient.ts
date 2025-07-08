@@ -95,7 +95,7 @@ export class BuildsClient {
         return Promise.resolve<ScheduledBuild[]>(null as any);
     }
 
-    queueBuild(project: string | undefined, preset: string | undefined, sha: string | null | undefined): Promise<string> {
+    queueBuild(project: string | undefined, preset: string | undefined, sha: string | undefined, suffix: string | undefined): Promise<string> {
         let url_ = this.baseUrl + "/api/Builds/queue-build?";
         if (project === null)
             throw new Error("The parameter 'project' cannot be null.");
@@ -105,8 +105,14 @@ export class BuildsClient {
             throw new Error("The parameter 'preset' cannot be null.");
         else if (preset !== undefined)
             url_ += "preset=" + encodeURIComponent("" + preset) + "&";
-        if (sha !== undefined && sha !== null)
+        if (sha === null)
+            throw new Error("The parameter 'sha' cannot be null.");
+        else if (sha !== undefined)
             url_ += "sha=" + encodeURIComponent("" + sha) + "&";
+        if (suffix === null)
+            throw new Error("The parameter 'suffix' cannot be null.");
+        else if (suffix !== undefined)
+            url_ += "suffix=" + encodeURIComponent("" + suffix) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: RequestInit = {
@@ -668,6 +674,7 @@ export interface ScheduledBuild {
     status: EScheduledBuildStatus;
     link: string;
     log: string;
+    customSuffix?: string | undefined;
 }
 
 export enum EScheduledBuildStatus {

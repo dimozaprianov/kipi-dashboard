@@ -18,6 +18,7 @@ import {
     ComboboxTrigger
 } from "../shadcn/components/ui/combobox";
 import {RefreshIcon} from "../components/icons";
+import {TextField, TextFieldRoot} from "../shadcn/components/ui/textField";
 
 function StatusBadge(props: {status: EScheduledBuildStatus}) {
     return <Switch fallback={<div>Not Found</div>}>
@@ -78,10 +79,10 @@ export function RenderCommitEntry(props: {commit: GitHubCommit}) {
     </div>
 }
 
-function TitleSection(props: {title: string, onRefresh: () => void}) {
+function TitleSection(props: {title: string, onRefresh?: () => void}) {
     return <div class="flex flex-row justify-between">
         <T variant="title">{props.title}</T>
-        <Button variant="ghost" onClick={() => props.onRefresh()}><RefreshIcon/></Button>
+        {props.onRefresh && <Button variant="ghost" onClick={() => props.onRefresh()}><RefreshIcon/></Button>}
     </div>
 }
 
@@ -93,6 +94,7 @@ export function BuildOnDemand() {
     const [selectedProjectRaw, setSelectedProject] = createSignal<string | undefined>(undefined)
     const [selectedBranch, setSelectedBranch] = createSignal<string | undefined>(undefined)
     const [selectedPreset, setSelectedPreset] = createSignal<string | undefined>(undefined)
+    const [suffix, setSuffix] = createSignal<string>("")
 
     const selectedProject = createMemo(() => {
         if (projects.value)
@@ -141,7 +143,7 @@ export function BuildOnDemand() {
         setSelectedPreset(undefined)
         if (!preset)
             return
-        await buildsClient.queueBuild(selectedProject(), preset, selectedCommit() ?? selectedBranch())
+        await buildsClient.queueBuild(selectedProject(), preset, selectedCommit() ?? selectedBranch(), suffix())
         refetch()
     }
 
@@ -212,7 +214,7 @@ export function BuildOnDemand() {
     })
 
     createEffect(() => {
-        const timeout = setInterval(() => !["ready", "errored"].includes(builds.state) && refetch(), 1000)
+        const timeout = setInterval(() => ["ready", "errored"].includes(builds.state) && refetch(), 1000)
         onCleanup(() => clearInterval(timeout))
     })
 
@@ -296,6 +298,10 @@ export function BuildOnDemand() {
                                             </ComboboxTrigger>
                                             <ComboboxContent listClass="max-h-[var(--kb-popper-content-available-height)] overflow-y-auto"/>
                                         </Combobox>
+                                        <TitleSection title="Custom Suffix:"/>
+                                        <TextFieldRoot class="mb-4" value={suffix()} onChange={v => setSuffix(v)}>
+                                            <TextField type="text" placeholder="Suffix" />
+                                        </TextFieldRoot>
                                     </TabsContent>
                                 )}
                             </For>
