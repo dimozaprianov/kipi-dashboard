@@ -1,5 +1,16 @@
-import {BuildsClient, EScheduledBuildStatus, GitHubCommit, ScheduledBuild} from "../api/apiClient";
-import {createEffect, createMemo, createSignal, For, Match, onCleanup, Show, Switch, untrack} from "solid-js";
+import {BuildsClient, EngineForBuild, EScheduledBuildStatus, GitHubCommit, ScheduledBuild} from "../api/apiClient";
+import {
+    createEffect,
+    createMemo,
+    createResource,
+    createSignal,
+    For,
+    Match,
+    onCleanup,
+    Show,
+    Switch,
+    untrack
+} from "solid-js";
 import {Tab, TabsContent, TabsIndicator, TabsList, TabsTrigger} from "../shadcn/components/ui/tab";
 import {T} from "../components/typography";
 import {LoadingIndicator} from "../components/loadingIndicator";
@@ -91,11 +102,13 @@ export function BuildOnDemand() {
     const [builds, {refetch, setStore}] = createStoreResource(() => buildsClient.getBuilds())
 
     const [projects, {setStore: setProjectsStore, mutate: setProjects}] = createStoreResource(() => buildsClient.getPresets(false))
+    const [engines, {refetch: refreshEngines}] = createResource(() => buildsClient.getEngineBuilds())
+
     const [selectedProjectRaw, setSelectedProject] = createSignal<string | undefined>(undefined)
     const [selectedBranch, setSelectedBranch] = createSignal<string | undefined>(undefined)
     const [selectedPreset, setSelectedPreset] = createSignal<string | undefined>(undefined)
+    const [selectedEngine, setSelectedEngine] = createSignal<string | undefined>(undefined)
     const [suffix, setSuffix] = createSignal<string>("")
-
     const selectedProject = createMemo(() => {
         if (projects.value)
             return selectedProjectRaw() ?? projects.value[0].id
@@ -109,6 +122,16 @@ export function BuildOnDemand() {
             : [])
 
     const [selectedCommit, setSelectedCommit] = createSignal<string | undefined>(undefined)
+    const [defaultEngine] = createResource(
+        () => [selectedProjectRaw() ?? (projects.value ? projects.value[0].id : undefined), selectedCommit() ?? selectedBranch(), engines()],
+        async ([project, sha, engines]: [string, string, EngineForBuild[] | undefined]) => {
+            if (!engines || !project || !sha)
+                return
+            const enginePath = await buildsClient.getDefaultEngineForBuild(project, sha)
+            const engineInfo = engines.find(e => e.path === enginePath)
+            return engineInfo.name
+        }
+    )
 
     function refreshPresets() {
         setSelectedPreset(undefined)
@@ -143,7 +166,9 @@ export function BuildOnDemand() {
         setSelectedPreset(undefined)
         if (!preset)
             return
-        await buildsClient.queueBuild(selectedProject(), preset, selectedCommit() ?? selectedBranch(), suffix())
+        const enginesInfo = engines()
+        const selected = enginesInfo.find(e => e.name === selectedEngine())
+        await buildsClient.queueBuild(selectedProject(), preset, selectedCommit() ?? selectedBranch(), suffix() ?? "", selected?.path ?? "")
         refetch()
     }
 
@@ -302,6 +327,26 @@ export function BuildOnDemand() {
                                         <TextFieldRoot class="mb-4" value={suffix()} onChange={v => setSuffix(v)}>
                                             <TextField type="text" placeholder="Suffix" />
                                         </TextFieldRoot>
+                                        <TitleSection title="Build With:" onRefresh={refreshEngines}/>
+                                        <Combobox<string>
+                                            multiple={false}
+                                            value={selectedEngine() ?? defaultEngine()}
+                                            onChange={value => setSelectedEngine(value)}
+                                            options={(engines() ?? []).map(m => m.name)}
+                                            class="mb-4"
+                                            placeholder="Choose engine to use for build, leave it empty to use default…"
+                                            itemComponent={(props) => (
+                                                <ComboboxItem item={props.item} class={defaultEngine() === props.item.rawValue ? "font-bold" : ""}>{props.item.rawValue}{defaultEngine() === props.item.rawValue && " (default)"}</ComboboxItem>
+                                            )}
+                                            sameWidth={true}
+                                            fitViewport={true}
+
+                                        >
+                                            <ComboboxTrigger>
+                                                <ComboboxInput class={!selectedEngine() || selectedEngine() === defaultEngine() ? "font-bold" : ""}/>
+                                            </ComboboxTrigger>
+                                            <ComboboxContent listClass="max-h-[var(--kb-popper-content-available-height)] overflow-y-auto"/>
+                                        </Combobox>
                                     </TabsContent>
                                 )}
                             </For>
