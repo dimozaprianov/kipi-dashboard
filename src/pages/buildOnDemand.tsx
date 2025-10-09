@@ -19,7 +19,7 @@ import {formatDistanceToNow, formatRelative} from "date-fns"
 import {Badge} from "../shadcn/components/ui/badge";
 import "../components/buildingIndicator.css"
 import {createStoreResource} from "../utils/resources";
-import {LogViewer} from "../components/logViewer";
+import {LogViewer as LogViewerExt} from "../components/logViewer";
 import {find} from "lodash";
 import {
     Combobox,
@@ -56,6 +56,28 @@ type TActions = {
     action: (build: ScheduledBuild, action: "cancel" | "archive") => Promise<void>
 }
 
+type TLogViewer = {
+    open: boolean
+    buildId: string | undefined
+    onClosed: () => void
+}
+
+export function LogViewer(props: TLogViewer) {
+    const buildsClient = new BuildsClient(import.meta.env.VITE_CI_SERVER)
+    const logKey = createMemo(() => (props.open ? props.buildId : null));
+    const [log, {refetch}] = createResource(logKey, (id) => buildsClient.getBuildLog(id));
+    createEffect(() => {
+        if (props.open) {
+            const timeout = setInterval(() => ["ready", "errored"].includes(log.state) && refetch(), 1000)
+            onCleanup(() => clearInterval(timeout))
+        }
+    })
+
+    return <Show when={log()}>
+        <LogViewerExt open={props.open} onClosed={props.onClosed} log={log()}/>
+    </Show>
+}
+
 function Actions(props: TActions) {
     const [logOpened, setLogOpened] = createSignal(false)
     return <div class="flex flex-row h-full pl-4 gap-1">
@@ -77,7 +99,7 @@ function Actions(props: TActions) {
         <Show when={props.build.status > EScheduledBuildStatus.Building && props.build.status !== EScheduledBuildStatus.Archived}>
             <Button size="xs" onClick={() => props.action(props.build, "archive")}>archive</Button>
         </Show>
-        <LogViewer open={logOpened()} log={props.build.log} onClosed={() => setLogOpened(false)}/>
+        <LogViewer open={logOpened()} buildId={props.build.id} onClosed={() => setLogOpened(false)}/>
     </div>
 }
 
@@ -140,7 +162,6 @@ export function BuildOnDemand() {
                 setProjects(result)
                 setSelectedPreset(undefined)
             })
-
     }
 
     function refreshBranches() {
@@ -167,8 +188,9 @@ export function BuildOnDemand() {
         if (!preset)
             return
         const enginesInfo = engines()
-        const selected = enginesInfo.find(e => e.name === selectedEngine())
-        await buildsClient.queueBuild(selectedProject(), preset, selectedCommit() ?? selectedBranch(), suffix() ?? "", selected?.path ?? "")
+        const engineToUse = selectedEngine() ?? defaultEngine()
+        const selected = enginesInfo.find(e => e.name === engineToUse)
+        await buildsClient.queueBuild(selectedProject(), preset, selectedBranch(), selectedCommit() ?? selectedBranch(), suffix() ?? "", selected?.path ?? "")
         refetch()
     }
 
@@ -255,8 +277,8 @@ export function BuildOnDemand() {
 
     const now = Date.now()
     return <div class="p-24 py-8">
-        <div class="flex flex-row gap-2">
-            <div class="w-1/3">
+        <div class="flex flex-row gap-8">
+            <div class="w-1/6">
                 <T variant="title2">Projects</T>
                 <Show when={projects.value} fallback={<LoadingIndicator/>}>
                     <Tab defaultValue={projects.value[0].id} onChange={v => setSelectedProject(v)}>
@@ -354,38 +376,49 @@ export function BuildOnDemand() {
                     </Tab>
                 </Show>
             </div>
-            <div class="w-2/3">
+            <div class="w-5/6">
                 <T variant="title2">Queued Build</T>
                 <table>
                     <thead class="border-b border-gray-300">
-                        <tr>
-                            <th class="text-left w-full pl-1">Project</th>
-                            <th class="text-left w-fit pl-1">Preset</th>
-                            <th class="text-left w-fit pl-1">Status</th>
-                            <th class="text-left w-fit pl-1">Date</th>
-                        </tr>
+                    <tr class="h-8">
+                        <th class="text-left w-full pl-2">Project</th>
+                        <th class="text-left w-fit pl-2">Status</th>
+                        <th class="text-left w-fit pl-2">Commit</th>
+                        <th class="text-left w-fit pl-2 bg-gray-100">Branch</th>
+                        <th class="text-left w-fit pl-2">Engine</th>
+                        <th class="text-left w-fit pl-2 bg-gray-100">Preset</th>
+                        <th class="text-left w-fit pl-2">Date</th>
+                    </tr>
                     </thead>
                     <tbody>
                         <For each={builds.value ?? []}>
                             {(build) => {
                                 return <tr>
-                                    <td class="min-w-64 p-1">
+                                    <td class="min-w-24 p-1">
                                         <div class="flex flex-row gap-2">
-                                            <div>
-                                                <T>{build.project}</T>
-                                                <T variant="subtitle">{build?.sha?.length === 40 ? build.sha.substring(0, 8) : build.sha}</T>
-                                            </div>
+                                            <T>{build.project}</T>
                                             <Show when={build.status === EScheduledBuildStatus.Building}>
                                                 <div class="ml-4 building-indicator"/>
                                             </Show>
                                         </div>
                                     </td>
-                                    <td class="min-w-32 p-1">
-                                        <T>{build.preset}</T>
+                                    <td class="min-w-24 p-1"><StatusBadge status={build.status}/></td>
+
+                                    <td class="px-3">
+                                        <T variant="details">{build?.sha?.length === 40 ? build.sha.substring(0, 8) : build.sha}</T>
                                     </td>
-                                    <td class="min-w-32 p-1"><StatusBadge status={build.status}/></td>
-                                    <td class="min-w-32 p-1 text-nowrap">{formatRelative(build.timeStamp, now)}</td>
-                                    <td class="min-w-32 p-1"><Actions build={build} action={buildAction}/></td>
+                                    <td class="p-1 bg-gray-100">
+                                        <T variant="body" class="text-nowrap">{build.branch}</T>
+                                    </td>
+                                    <td class="p-1">
+                                        <T variant="body" class="text-nowrap font-medium">{build.unrealName}</T>
+                                    </td>
+
+                                    <td class="min-w-24 p-1 bg-gray-100">
+                                        <T variant="body">{build.preset}</T>
+                                    </td>
+                                    <td class="min-w-24 p-1 text-nowrap"><T variant="body">{formatRelative(build.timeStamp, now)}</T></td>
+                                    <td class="min-w-24 p-1"><Actions build={build} action={buildAction}/></td>
                                 </tr>
                             }}
                         </For>
