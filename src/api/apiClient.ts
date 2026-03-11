@@ -206,7 +206,7 @@ export class BuildsClient {
         return Promise.resolve<string>(null as any);
     }
 
-    queueBuild(project: string | undefined, preset: string | undefined, branch: string | null | undefined, sha: string | null | undefined, suffix: string | null | undefined, enginePath: string | null | undefined): Promise<string> {
+    queueBuild(project: string | undefined, preset: string | undefined, branch: string | null | undefined, sha: string | null | undefined, suffix: string | null | undefined, engineVersion: string | null | undefined): Promise<string> {
         let url_ = this.baseUrl + "/api/Builds/queue-build?";
         if (project === null)
             throw new Error("The parameter 'project' cannot be null.");
@@ -222,8 +222,8 @@ export class BuildsClient {
             url_ += "sha=" + encodeURIComponent("" + sha) + "&";
         if (suffix !== undefined && suffix !== null)
             url_ += "suffix=" + encodeURIComponent("" + suffix) + "&";
-        if (enginePath !== undefined && enginePath !== null)
-            url_ += "enginePath=" + encodeURIComponent("" + enginePath) + "&";
+        if (engineVersion !== undefined && engineVersion !== null)
+            url_ += "engineVersion=" + encodeURIComponent("" + engineVersion) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: RequestInit = {
@@ -786,7 +786,7 @@ export interface ScheduledBuild {
     link: string;
     log: string;
     customSuffix?: string | undefined;
-    unrealPath?: string | undefined;
+    unrealVersion?: string | undefined;
     branch?: string | undefined;
     unrealName?: string | undefined;
 }

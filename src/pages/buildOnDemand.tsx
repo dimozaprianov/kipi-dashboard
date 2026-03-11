@@ -384,7 +384,7 @@ export function BuildOnDemand() {
                         <th class="text-left w-full pl-2">Project</th>
                         <th class="text-left w-fit pl-2">Status</th>
                         <th class="text-left w-fit pl-2">Commit</th>
-                        <th class="text-left w-fit pl-2 bg-gray-100">Branch</th>
+                        <th class="text-left max-w-16 pl-2 bg-gray-100">Branch</th>
                         <th class="text-left w-fit pl-2">Engine</th>
                         <th class="text-left w-fit pl-2 bg-gray-100">Preset</th>
                         <th class="text-left w-fit pl-2">Date</th>
@@ -407,8 +407,8 @@ export function BuildOnDemand() {
                                     <td class="px-3">
                                         <T variant="details">{build?.sha?.length === 40 ? build.sha.substring(0, 8) : build.sha}</T>
                                     </td>
-                                    <td class="p-1 bg-gray-100">
-                                        <T variant="body" class="text-nowrap">{build.branch}</T>
+                                    <td class="p-1 max-w-48 bg-gray-100">
+                                        <T variant="body" class="text-nowrap truncate">{build.branch}</T>
                                     </td>
                                     <td class="p-1">
                                         <T variant="body" class="text-nowrap font-medium">{build.unrealName}</T>
